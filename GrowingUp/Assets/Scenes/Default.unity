@@ -260,9 +260,11 @@ GameObject:
   - 33: {fileID: 466642331}
   - 136: {fileID: 466642330}
   - 23: {fileID: 466642329}
+  - 114: {fileID: 466642333}
+  - 114: {fileID: 466642334}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,6 +327,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &466642333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 466642328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b0046ab4549d46a1a0143dd7a2f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &466642334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 466642328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daca9acb6c59f6440a291d532987f5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503203928
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +485,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1455279580}
+  - 114: {fileID: 1455279581}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -480,6 +505,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1455279581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1455279579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3909e8a2450638144b2deb1932a14932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1500493219
 GameObject:
   m_ObjectHideFlags: 0
