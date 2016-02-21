@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\Location.cs" />
      <Compile Include="Assets\Scripts\MenuUI.cs" />
+     <Compile Include="Assets\Scripts\Obstacle.cs" />
+     <Compile Include="Assets\Scripts\ObstacleGenerator.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
  <Reference Include="UnityEngine.UI">
