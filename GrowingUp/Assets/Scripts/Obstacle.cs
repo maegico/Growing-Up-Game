@@ -3,12 +3,14 @@ using System.Collections;
 
 public class Obstacle : MonoBehaviour {
 
-    Location.lane currentLane;
-    float timer;
+    public Location.lane currentLane;
+    public float timer;
 
 	// Use this for initialization
 	void Start () {
-        timer = 300;
+        //will make it so that obstacle generate sets these
+        timer = 3;
+        currentLane = Location.lane.middle;
         int lane = (int)(Random.Range(0, 2));
         switch(lane)
         {
@@ -29,26 +31,20 @@ public class Obstacle : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            int action = (int)(Random.Range(0, 1));
+            int action = (int)(Random.Range(0, 2));
             switch (action)
             {
                 case 0:
-                    if (currentLane == Location.lane.right)
-                        MoveLeft();
-                    else
-                        MoveRight();
+                    MoveRight();
                     break;
                 case 1:
-                    if (currentLane == Location.lane.left)
-                        MoveRight();
-                    else
-                        MoveLeft();
+                    MoveLeft();
                     break;
                 default:
                     break;
             }
 
-            timer = 300;
+            timer = 3;
         }
 
 
