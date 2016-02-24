@@ -12,45 +12,34 @@ public class PlayerScript : MonoBehaviour {
         jumping
     }
 
-	// the player's current state
-    playerState curState;
-	// the player's lane
-    public Location.lane currentLane;
-	// timer used for transitioning between lanes
-    float timer;
-	// the player model's world-position represented by an integer
-    int playerPosition;
-	// the width of a lane in word-coordinates
-	public float laneWidth = 9f;
-	// the width of a lane rounded to an integer
-	protected int laneWidthInt;
+    playerState curState;               // the player's current state
+    public Location.lane currentLane;   // the player's lane
+    float timer;                        // timer used for transitioning between lanes
+    int playerPosition;                 // the player model's world-position represented by an integer
+    public float laneWidth = 9f;        // the width of a lane in word-coordinates
+    protected int laneWidthInt;         // the width of a lane rounded to an integer
 
-	// the player's position on the wheel, for use in obstacle hit
-	// uses degrees as unit
-	public float posOnWheel = 30f; 
     
-    
-	// Use this for initialization
-	void Start () {
-		// start in the middle lane
-        currentLane = Location.lane.middle;
-        // reset time
-		timer = 0;
-        // lane 0 is the center lane
-		playerPosition = 0;
+    public float posOnWheel = 30f;      // the player's position on the wheel, for use in obstacle hit
+                                        // uses degrees as unit
+
+
+    // Use this for initialization
+    void Start () {
+		
+        currentLane = Location.lane.middle; // start in the middle lane                                            
+        timer = 0; // reset time
+        playerPosition = 0; // lane 0 is the center lane
         curState = playerState.inLane;
-
 		laneWidthInt = (int)laneWidth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// move left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();
-		// move right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();         // move left                                                                                            
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();  // move right
 
-		// transition the model left
+        // transition the model left
         if (curState == playerState.movingLeft)
         {
 			// increment timer
