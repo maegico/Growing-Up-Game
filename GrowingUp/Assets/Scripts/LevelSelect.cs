@@ -23,6 +23,10 @@ public class LevelSelect : MonoBehaviour {
         Application.LoadLevel(1);
     }
 
+	public void MainMenu() {
+		Application.LoadLevel(0);
+	}
+
     private void LoadLevelByName()
     {
         

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
+	// player exists in only one of these states
     enum playerState
     {
         inLane,
@@ -11,32 +12,55 @@ public class PlayerScript : MonoBehaviour {
         jumping
     }
 
+	// the player's current state
     playerState curState;
-    Location.lane currentLane;
+	// the player's lane
+    public Location.lane currentLane;
+	// timer used for transitioning between lanes
     float timer;
+	// the player model's world-position represented by an integer
     int playerPosition;
+	// the width of a lane in word-coordinates
+	public float laneWidth = 9f;
+	// the width of a lane rounded to an integer
+	protected int laneWidthInt;
+
+	// the player's position on the wheel, for use in obstacle hit
+	// uses degrees as unit
+	public float posOnWheel = 30f; 
     
     
 	// Use this for initialization
 	void Start () {
+		// start in the middle lane
         currentLane = Location.lane.middle;
-        timer = 0;
-        playerPosition = 0;
+        // reset time
+		timer = 0;
+        // lane 0 is the center lane
+		playerPosition = 0;
         curState = playerState.inLane;
+
+		laneWidthInt = (int)laneWidth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// move left
         if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();
+		// move right
         if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();
+
+		// transition the model left
         if (curState == playerState.movingLeft)
         {
-            float deltaTime = Time.deltaTime;
-            timer += deltaTime;
+			// increment timer
+			timer += Time.deltaTime;
+			// if the player is not far enough to the left, move them left
             if (gameObject.transform.position.x >= (-9 + playerPosition))
             {
-                gameObject.transform.Translate(new Vector3(-deltaTime * (9f / 0.1f), 0, 0));
+                gameObject.transform.Translate(new Vector3(-Time.deltaTime * (9f / 0.1f), 0, 0));
             }
+			// if the game object is too far left, move them back
             else
             {
                 timer = 0;
@@ -47,12 +71,14 @@ public class PlayerScript : MonoBehaviour {
         }
         if (curState == playerState.movingRight)
         {
-            float deltaTime = Time.deltaTime;
-            timer += deltaTime;
+            // increment timer
+            timer += Time.deltaTime;
+			// if the player is not far enough to the right, move them right
             if (gameObject.transform.position.x <= (9 + playerPosition))
             {
-                gameObject.transform.Translate(new Vector3(deltaTime * (9f / 0.1f), 0, 0));
+                gameObject.transform.Translate(new Vector3(Time.deltaTime * (9f / 0.1f), 0, 0));
             }
+			// if the game object is too far right, move them back
             else
             {
                 timer = 0;
@@ -63,6 +89,7 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+	// moves one lane to the right based on what lane the player is in
     void MoveRight()
     {
         switch  (currentLane)
@@ -82,6 +109,7 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+	// moves one lane to the left based on what lane the player is in
     void MoveLeft()
     {
         switch (currentLane)

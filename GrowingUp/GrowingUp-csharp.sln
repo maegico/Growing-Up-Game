@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{3318775D-0F1C-35BD-5899-5C53E5718240}") = "GrowingUp", "Assembly-CSharp.csproj", "{37CF0A93-7683-CA76-CEFD-B87A049DC4AD}"
+Project("{3318775D-0F1C-35BD-5899-5C53E5718240}") = "GrowingUp", "Assembly-CSharp-vs.csproj", "{37CF0A93-7683-CA76-CEFD-B87A049DC4AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,7 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																					GlobalSection(MonoDevelopProperties) = preSolution
+																						GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> a9d7e6fb0967347b57eb2411ce1d45d533fb5c57
