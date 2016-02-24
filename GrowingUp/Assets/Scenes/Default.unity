@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLane: 0
   changeLaneTrigger: 60
-  positionOnWheel: 0
+  positionOnWheel: 270
 --- !u!1 &466642328
 GameObject:
   m_ObjectHideFlags: 0

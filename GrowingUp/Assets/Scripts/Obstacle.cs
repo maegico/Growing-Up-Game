@@ -34,7 +34,7 @@ public class Obstacle : MonoBehaviour {
         //setPositionToCurrentLane(); // on start
 
         // Set initial distance on wheel
-        //wheel.rotated += positionOnWheel;
+        wheel.rotated += positionOnWheel;
         //changeLaneTrigger += positionOnWheel;
     }
 	

@@ -12,15 +12,24 @@ public class Rotate : MonoBehaviour {
 	// number of rotation units per full rotation, in this case degrees
 	protected float cycleCoefficient = 360f;
 
-	// total distance in terms of cycles -currently actually in terms of degrees
+	// total distance in terms of cycles - currently actually in terms of degrees
+    /// <summary>
+    /// Current distance in terms of degrees.
+    /// </summary>
 	public float rotated = 0;
 
+    /// <summary>
+    /// Returns the number of cycles completed.
+    /// </summary>
 	public int CyclesCompleted {
 		get {
-			return (int)rotated;
+			return (int)rotated/360;
 		}
 	}
 
+    /// <summary>
+    /// Returns the ditance the wheel has rotated in degrees
+    /// </summary>
 	public float DistanceRotated {
 		get {	
 			return rotated;

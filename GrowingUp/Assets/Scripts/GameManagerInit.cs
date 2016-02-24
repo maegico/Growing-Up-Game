@@ -43,7 +43,7 @@ public class GameManagerInit : MonoBehaviour {
 		foreach(Obstacle obs in generator.Obstacles) {
 
 			// get the current position of the obstacle
-			float obsPos = wheel.rotated + obs.positionOnWheel;
+			float obsPos = wheel.rotated;
 
 			// check to see if the obstacle is in line with the player
 			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+5) {
