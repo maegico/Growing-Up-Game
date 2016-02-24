@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour {
 		// move left
         if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();
 		// move right
-        if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();
 
 		// transition the model left
         if (curState == playerState.movingLeft)
@@ -56,12 +56,12 @@ public class PlayerScript : MonoBehaviour {
 			// increment timer
 			timer += Time.deltaTime;
 			// if the player is not far enough to the left, move them left
-            if (gameObject.transform.position.x >= (-9 + playerPosition))
+            if (gameObject.transform.position.x > (-9 + playerPosition))
             {
                 gameObject.transform.Translate(new Vector3(-Time.deltaTime * (9f / 0.1f), 0, 0));
             }
 			// if the game object is too far left, move them back
-            else
+            if (gameObject.transform.position.x <= (-9 + playerPosition))
             {
                 timer = 0;
                 curState = playerState.inLane;
@@ -69,17 +69,19 @@ public class PlayerScript : MonoBehaviour {
                 gameObject.transform.position = new Vector3((float)playerPosition, gameObject.transform.position.y, gameObject.transform.position.z);
             }
         }
+
+        // transition the model right
         if (curState == playerState.movingRight)
         {
             // increment timer
             timer += Time.deltaTime;
 			// if the player is not far enough to the right, move them right
-            if (gameObject.transform.position.x <= (9 + playerPosition))
+            if (gameObject.transform.position.x < (9 + playerPosition))
             {
                 gameObject.transform.Translate(new Vector3(Time.deltaTime * (9f / 0.1f), 0, 0));
             }
 			// if the game object is too far right, move them back
-            else
+            if (gameObject.transform.position.x >= (9 + playerPosition))
             {
                 timer = 0;
                 curState = playerState.inLane;

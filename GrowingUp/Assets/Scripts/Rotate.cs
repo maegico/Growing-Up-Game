@@ -12,7 +12,7 @@ public class Rotate : MonoBehaviour {
 	// number of rotation units per full rotation, in this case degrees
 	protected float cycleCoefficient = 360f;
 
-	// total distance in terms of cycles
+	// total distance in terms of cycles -currently actually in terms of degrees
 	public float rotated = 0;
 
 	public int CyclesCompleted {
