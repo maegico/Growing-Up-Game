@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class ObstacleGenerator : MonoBehaviour {
 
+    //(1.042, 0.021, 0) - child of roller
+
     float timer;
     List<Obstacle> obstacles;
 
@@ -25,8 +27,12 @@ public class ObstacleGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (obstacles.Count < 5 && timer <= 0)
         {
+            //not sure why this is giving me errors
+            //obstacles.Add(Instantiate(obstacles[0], new Vector3(1.042f, 0.021f, 0.0f), Quaternion.identity));
+            //we will see if this script works
+            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("roller").transform, false);
             //Generate Obstacle
             timer = 3;
         }
