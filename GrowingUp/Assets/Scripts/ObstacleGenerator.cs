@@ -13,7 +13,6 @@ public class ObstacleGenerator : MonoBehaviour {
 		get {
 			return obstacles;
 		}
-
 	}
 
     // Use this for initialization
@@ -30,7 +29,7 @@ public class ObstacleGenerator : MonoBehaviour {
         if (obstacles.Count < 5 && timer <= 0)
         {
             //not sure why this is giving me errors
-            //obstacles.Add(Instantiate(obstacles[0], new Vector3(1.042f, 0.021f, 0.0f), Quaternion.identity));
+            obstacles.Add((Obstacle)Instantiate(obstacles[0], new Vector3(-0.5f, 12.5f, 31.9f), Quaternion.identity));
             //we will see if this script works
             obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("roller").transform, false);
             //Generate Obstacle

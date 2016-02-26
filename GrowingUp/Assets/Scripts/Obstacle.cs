@@ -36,6 +36,8 @@ public class Obstacle : MonoBehaviour {
         // Set initial distance on wheel
         wheel.rotated += positionOnWheel;
         //changeLaneTrigger += positionOnWheel;
+
+        //print(transform.position);
     }
 	
 	// Update is called once per frame
