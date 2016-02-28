@@ -34,6 +34,9 @@ public class GameManagerInit : MonoBehaviour {
 		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<Rotate>();
 		// get level select ref
 		levelSelect = GetComponent<LevelSelect>();
+
+        // get actual player angle
+        player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
     }
 	
 	// Update is called once per frame
