@@ -8,6 +8,7 @@ public class ObstacleGenerator : MonoBehaviour {
 
     float timer;
     List<Obstacle> obstacles;
+    //GameManagerInit gm;
 
 	public List<Obstacle> Obstacles {
 		get {
@@ -17,6 +18,7 @@ public class ObstacleGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //gm = GetComponent<GameManagerInit>();
         timer = 3;
         obstacles = new List<Obstacle>();
 		// for now we'll fill this list with the one obstacle in the game
@@ -31,7 +33,7 @@ public class ObstacleGenerator : MonoBehaviour {
             //not sure why this is giving me errors
             obstacles.Add((Obstacle)Instantiate(obstacles[0], new Vector3(-0.5f, 12.5f, 31.9f), Quaternion.identity));
             //we will see if this script works
-            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("roller").transform, false);
+            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform, false);
             //Generate Obstacle
             timer = 3;
         }
