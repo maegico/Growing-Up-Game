@@ -249,7 +249,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 466642328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.56999993, z: 0}
+  m_LocalPosition: {x: 0, y: 5.88000011, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2101359118}
@@ -280,6 +280,14 @@ MonoBehaviour:
   currentLane: 0
   laneWidth: 9
   posOnWheel: 25
+  animationTimer: 0
+  playerFrame: 0
+  playerFrames:
+  - {fileID: 2800000, guid: eb657bdfa61387545854c58fe67e8fee, type: 3}
+  - {fileID: 2800000, guid: 1716fccb2fdd54745b8d48a9ecf83699, type: 3}
+  - {fileID: 2800000, guid: eb657bdfa61387545854c58fe67e8fee, type: 3}
+  - {fileID: 2800000, guid: 2520e1140c6031043b039885d3686cf1, type: 3}
+  playerImage: {fileID: 0}
 --- !u!1 &503203928
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +454,18 @@ Prefab:
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
+    - target: {fileID: 9500000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
+      propertyPath: m_TagString
+      value: PlayerFrame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}

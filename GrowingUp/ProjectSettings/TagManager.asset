@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - player
+  - Roller
+  - PlayerFrame
   layers:
   - Default
   - TransparentFX

@@ -24,6 +24,13 @@ public class PlayerScript : MonoBehaviour {
                                         // uses degrees as unit
 
 
+    public float animationTimer;               // The timer for the player animation
+    public int playerFrame;                    // The player's current frame
+    public Texture2D[] playerFrames;             // Player's textures
+    public GameObject playerImage;
+
+
+
     // Use this for initialization
     void Start () {
 		
@@ -32,7 +39,10 @@ public class PlayerScript : MonoBehaviour {
         playerPosition = 0; // lane 0 is the center lane
         curState = playerState.inLane;
 		laneWidthInt = (int)laneWidth;
-	}
+        playerFrame = 0;
+        animationTimer = 0;
+        playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -78,6 +88,32 @@ public class PlayerScript : MonoBehaviour {
                 gameObject.transform.position = new Vector3((float)playerPosition, gameObject.transform.position.y, gameObject.transform.position.z);
             }
         }
+        
+        animationTimer += Time.deltaTime;
+        if (animationTimer >= 0.25)
+        {
+            animationTimer = 0;
+            playerFrame += 1;
+            if (playerFrame > 3) playerFrame = 0;
+            switch (playerFrame)
+            {
+                case 0:
+                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[0]);
+                    break;
+                case 1:
+                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
+                    break;
+                case 2:
+                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[2]);
+                    break;
+                case 3:
+                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[3]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
     }
 
 	// moves one lane to the right based on what lane the player is in
