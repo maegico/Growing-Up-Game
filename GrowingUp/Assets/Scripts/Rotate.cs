@@ -3,6 +3,12 @@ using System.Collections;
 
 public class Rotate : MonoBehaviour {
 
+    // rotation axis
+    public Vector3 RotationAxis;
+
+    // what rotation is applied first
+    public Vector3 InitialRotation;
+
 	// number of times per second that the rotator goes around
     public float RotationSpeed; // a speed of 0.25 makes the wheel rotate once every 4 seconds
 	
@@ -43,9 +49,10 @@ public class Rotate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// update total
-		rotated += RotationSpeed * cycleCoefficient * Time.deltaTime;
+		rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
 		// rotate using value based on time
-		transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));
+        transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
+        //transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));
 
 		// on-screen rotation is tied to the value
 	}
