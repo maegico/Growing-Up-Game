@@ -1,0 +1,11 @@
+a little too dark
+make the character smaller and make them grow older
+like the mobile idea
+switching behind an object is a little janky
+image for home screen
+an age counter - simmilar to a point counter
+with the day/night cycle - fix how dark it is
+
+idea
+	can when hit rotate backwards 
+		and then slow down the rotate forward
