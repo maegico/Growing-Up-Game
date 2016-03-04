@@ -54,12 +54,19 @@ public class GameManagerInit : MonoBehaviour {
 				// check if the obstacle is in the player's lane
 				// maybe check for this first...
 				if (obs.currentLane == player.currentLane) {
-					// collision!
-					//print("collision");
-					levelSelect.MainMenu();
+                    // collision!
+                    //print("collision");
+                    //levelSelect.MainMenu();
+                    HitPlayer();
 				}
 			}
 		}
 		//if (player.posOnWheel + 
 	}
+
+    void HitPlayer()
+    {
+        HitPlayer();
+
+    }
 }

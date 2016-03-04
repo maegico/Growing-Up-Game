@@ -30,6 +30,7 @@ public class PlayerScript : MonoBehaviour {
     public int playerFrame;                    // The player's current frame
     public Texture2D[] playerFrames;             // Player's textures
     public GameObject playerImage;
+    public bool beenHit;
 
 
 
@@ -46,6 +47,7 @@ public class PlayerScript : MonoBehaviour {
         jumpHeight = 18f;
         initialHeight = gameObject.transform.position.y;
         playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
+        beenHit = false;
     }
 	
 	// Update is called once per frame
@@ -154,6 +156,11 @@ public class PlayerScript : MonoBehaviour {
             }
         }
         
+    }
+
+    public void HitPlayer()
+    {
+        beenHit = true;
     }
 
 	// moves one lane to the right based on what lane the player is in
