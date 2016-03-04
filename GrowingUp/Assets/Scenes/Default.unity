@@ -279,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLane: 0
   laneWidth: 9
+  jumpHeight: 0
   posOnWheel: 25
   animationTimer: 0
   playerFrame: 0

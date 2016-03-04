@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour {
     int playerPosition;                 // the player model's world-position represented by an integer
     public float laneWidth = 9f;        // the width of a lane in word-coordinates
     protected int laneWidthInt;         // the width of a lane rounded to an integer
+    public float jumpHeight;
+    float initialHeight;
 
     
     public float posOnWheel = 30f;      // the player's position on the wheel, for use in obstacle hit
@@ -41,6 +43,8 @@ public class PlayerScript : MonoBehaviour {
 		laneWidthInt = (int)laneWidth;
         playerFrame = 0;
         animationTimer = 0;
+        jumpHeight = 18f;
+        initialHeight = gameObject.transform.position.y;
         playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
     }
 	
@@ -48,7 +52,33 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();         // move left                                                                                            
         else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();  // move right
-        else if (Input.GetKeyDown(KeyCode.Space) && curState == playerState.inLane) Jump();
+        else if (Input.GetKeyDown(KeyCode.Space) && curState == playerState.inLane)
+        {
+            curState = playerState.jumping;
+            initialHeight = gameObject.transform.position.y;
+        }
+
+        // Handle jumping animation
+        if (curState == playerState.jumping)
+        {
+            timer += Time.deltaTime;
+            if (timer <= 0.5)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialHeight + (jumpHeight * Mathf.Sin((timer * Mathf.PI) / 0.5f)), gameObject.transform.position.z);
+            }
+            else if (gameObject.transform.position.y != initialHeight)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialHeight, gameObject.transform.position.z);
+                timer = 0;
+                curState = playerState.inLane;
+            }
+            else
+            {
+                timer = 0;
+                curState = playerState.inLane;
+            }
+          
+        }
 
         // transition the model left
         if (curState == playerState.movingLeft)
@@ -95,35 +125,36 @@ public class PlayerScript : MonoBehaviour {
         animationTimer += Time.deltaTime;
         if (animationTimer >= 0.25)
         {
-            animationTimer = 0;
-            playerFrame += 1;
-            if (playerFrame > 3) playerFrame = 0;
-            switch (playerFrame)
+            if (curState == playerState.jumping)
             {
-                case 0:
-                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[0]);
-                    break;
-                case 1:
-                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
-                    break;
-                case 2:
-                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[2]);
-                    break;
-                case 3:
-                    playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[3]);
-                    break;
-                default:
-                    break;
+                playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
+            }
+            else
+            {
+                animationTimer = 0;
+                playerFrame += 1;
+                if (playerFrame > 3) playerFrame = 0;
+                switch (playerFrame)
+                {
+                    case 0:
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[0]);
+                        break;
+                    case 1:
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
+                        break;
+                    case 2:
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[2]);
+                        break;
+                    case 3:
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[3]);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         
     }
-
-    void Jump()
-    {
-
-    }
-
 
 	// moves one lane to the right based on what lane the player is in
     void MoveRight()
