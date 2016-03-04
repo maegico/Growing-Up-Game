@@ -369,7 +369,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8e7029cb40b76bc47bd6a1df07261f54, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8e7029cb40b76bc47bd6a1df07261f54, type: 3}
       propertyPath: m_LocalScale.x
@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53499cbbc131848429e45a70a77337fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 164338, guid: c44e85b0919387c46ab1f363602efb5e, type: 2}
 --- !u!114 &1455279583
 MonoBehaviour:
   m_ObjectHideFlags: 0

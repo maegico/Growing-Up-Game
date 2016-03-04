@@ -8,6 +8,7 @@ public class ObstacleGenerator : MonoBehaviour {
 
     float timer;
     List<Obstacle> obstacles;
+    public Object obstaclePrefab;
     //GameManagerInit gm;
 
 	public List<Obstacle> Obstacles {
@@ -31,9 +32,9 @@ public class ObstacleGenerator : MonoBehaviour {
         if (obstacles.Count < 5 && timer <= 0)
         {
             //not sure why this is giving me errors
-            obstacles.Add((Obstacle)Instantiate(obstacles[0], new Vector3(-0.5f, 12.5f, 31.9f), Quaternion.identity));
+            obstacles.Add((Obstacle)Instantiate(obstaclePrefab, new Vector3(0, 0, 1.05f), Quaternion.identity));//new Vector3(-0.5f, 12.5f, 31.9f), Quaternion.identity));
             //we will see if this script works
-            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform, false);
+            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform, true);
             //Generate Obstacle
             timer = 3;
         }
