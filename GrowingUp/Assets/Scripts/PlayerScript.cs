@@ -48,6 +48,7 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();         // move left                                                                                            
         else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();  // move right
+        else if (Input.GetKeyDown(KeyCode.Space) && curState == playerState.inLane) Jump();
 
         // transition the model left
         if (curState == playerState.movingLeft)
@@ -89,6 +90,8 @@ public class PlayerScript : MonoBehaviour {
             }
         }
         
+
+        //This section handles the 2D Animation
         animationTimer += Time.deltaTime;
         if (animationTimer >= 0.25)
         {
@@ -115,6 +118,12 @@ public class PlayerScript : MonoBehaviour {
         }
         
     }
+
+    void Jump()
+    {
+
+    }
+
 
 	// moves one lane to the right based on what lane the player is in
     void MoveRight()
