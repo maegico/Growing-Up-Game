@@ -31,10 +31,11 @@ public class ObstacleGenerator : MonoBehaviour {
         timer -= Time.deltaTime;
         if (obstacles.Count < 5 && timer <= 0)
         {
+            Object temp = Instantiate(obstaclePrefab, new Vector3(0, 0, 1.05f), Quaternion.identity);
             //not sure why this is giving me errors
-            obstacles.Add((Obstacle)Instantiate(obstaclePrefab, new Vector3(0, 0, 1.05f), Quaternion.identity));//new Vector3(-0.5f, 12.5f, 31.9f), Quaternion.identity));
+            obstacles.Add(((GameObject)temp).GetComponent<Obstacle>());
             //we will see if this script works
-            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform, true);
+            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform);
             //Generate Obstacle
             timer = 3;
         }
