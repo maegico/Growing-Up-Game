@@ -66,7 +66,10 @@ public class GameManagerInit : MonoBehaviour {
 
     void HitPlayer()
     {
-        HitPlayer();
-
+        if (player.beenHit == false)
+        {
+            wheel.PlayerHit = true;
+            player.HitPlayer();
+        }
     }
 }

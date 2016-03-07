@@ -28,9 +28,10 @@ public class PlayerScript : MonoBehaviour {
 
     public float animationTimer;               // The timer for the player animation
     public int playerFrame;                    // The player's current frame
-    public Texture2D[] playerFrames;             // Player's textures
-    public GameObject playerImage;
-    public bool beenHit;
+    public Texture2D[] playerFrames;           // Player's textures
+    public GameObject playerImage;             // Player's current texture
+    public bool beenHit;                       // True is player is currently in "being hit" animation
+    float hitTimer;
 
 
 
@@ -54,10 +55,43 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.LeftArrow) && curState == playerState.inLane) MoveLeft();         // move left                                                                                            
         else if (Input.GetKeyDown(KeyCode.RightArrow) && curState == playerState.inLane) MoveRight();  // move right
-        else if (Input.GetKeyDown(KeyCode.Space) && curState == playerState.inLane)
+        else if (Input.GetKeyDown(KeyCode.Space) && curState == playerState.inLane)                    // jump
         {
             curState = playerState.jumping;
             initialHeight = gameObject.transform.position.y;
+        }
+
+
+        //Handle playert hit animation
+        if (beenHit)
+        {
+            hitTimer += Time.deltaTime;
+            timer += Time.deltaTime;
+            //Handles player bounceback
+            if (hitTimer <= 0.5)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialHeight + (3 * Mathf.Sin((timer * Mathf.PI) / 0.5f)), gameObject.transform.position.z);
+            }
+            else if (gameObject.transform.position.y != initialHeight)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialHeight, gameObject.transform.position.z);
+            }
+            //Handles player blinking
+            if (hitTimer % 0.25 < 0.125)
+            {
+                playerImage.GetComponent<Renderer>().enabled = false;
+            }
+            else
+            {
+                playerImage.GetComponent<Renderer>().enabled = true;
+            }
+            //Ends hit animation
+            if (hitTimer > 3.5)
+            {
+                hitTimer = 0;
+                beenHit = false;
+                playerImage.GetComponent<Renderer>().enabled = true;
+            }
         }
 
         // Handle jumping animation
@@ -127,12 +161,14 @@ public class PlayerScript : MonoBehaviour {
         animationTimer += Time.deltaTime;
         if (animationTimer >= 0.25)
         {
+            // Uses the second from of animation if player is currently jumping
             if (curState == playerState.jumping)
             {
                 playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
             }
             else
             {
+                // Picks the current frame of animation based on the timer
                 animationTimer = 0;
                 playerFrame += 1;
                 if (playerFrame > 3) playerFrame = 0;
@@ -158,6 +194,7 @@ public class PlayerScript : MonoBehaviour {
         
     }
 
+    //Called be GameManagerInit when player is hit
     public void HitPlayer()
     {
         beenHit = true;
