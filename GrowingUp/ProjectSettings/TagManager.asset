@@ -8,6 +8,7 @@ TagManager:
   - player
   - Roller
   - PlayerFrame
+  - StressOverlay
   layers:
   - Default
   - TransparentFX

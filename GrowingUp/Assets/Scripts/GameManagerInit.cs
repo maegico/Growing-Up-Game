@@ -3,10 +3,12 @@ using System.Collections;
 
 public class GameManagerInit : MonoBehaviour {
 
-    PlayerScript player;
-	ObstacleGenerator generator;
-	Rotate wheel;
-	LevelSelect levelSelect;
+    PlayerScript player;                // Reference to player object
+	ObstacleGenerator generator;        // Reference to obstacle generator
+	Rotate wheel;                       // Reference to roller
+	LevelSelect levelSelect;            
+    public float stressDistance;        // Distance "life's stress" is from player
+    const float maxDistance = 30;       // Maximum distance "life's stress" can be from the player
 
 	public PlayerScript Player{
 		get {
@@ -37,6 +39,8 @@ public class GameManagerInit : MonoBehaviour {
 
         // get actual player angle
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
+
+        stressDistance = 40;
     }
 	
 	// Update is called once per frame
@@ -61,6 +65,17 @@ public class GameManagerInit : MonoBehaviour {
 				}
 			}
 		}
+        if (!player.beenHit)
+        {
+            stressDistance += Time.deltaTime;
+            if (stressDistance > maxDistance) stressDistance = maxDistance;
+        }
+        else
+        {
+            stressDistance -= Time.deltaTime;
+            if (stressDistance < 0) stressDistance = 0;
+        }
+        if (stressDistance < 5) player.playerHealth -= Time.deltaTime;
 		//if (player.posOnWheel + 
 	}
 
