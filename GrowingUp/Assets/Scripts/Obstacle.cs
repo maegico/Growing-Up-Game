@@ -41,6 +41,8 @@ public class Obstacle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //timer -= Time.deltaTime;
+
+		/*
 		// when the timer runs out, switch lanes (temporary)
         if (wheel.rotated >= changeLaneTrigger)
         {
@@ -52,7 +54,7 @@ public class Obstacle : MonoBehaviour {
             //int action = Random.Range(0, 2);
 
             // Switch to a random lane.
-            SetRandomLane();
+            //SetRandomLane();
             //switch (Random.Range(0, 2))
             //{
             //    case 0:
@@ -68,7 +70,7 @@ public class Obstacle : MonoBehaviour {
             changeLaneTrigger += 360;
 			print (currentLane);
         }
-
+		*/
 
         
     }
