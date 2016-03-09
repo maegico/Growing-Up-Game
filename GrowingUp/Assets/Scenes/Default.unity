@@ -523,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationAxis: {x: 1, y: 0, z: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
-  RotationSpeed: 0.02
+  RotationSpeed: 0.05
   rotatedDebug: 0
   timer: 0
   rollerMultiplier: 0
@@ -702,6 +702,7 @@ GameObject:
   - 114: {fileID: 1455279582}
   - 114: {fileID: 1455279583}
   - 114: {fileID: 1455279584}
+  - 114: {fileID: 1455279585}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -765,6 +766,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fdfa191a7add624683768416e4f484c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1455279585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1455279579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87bcbf86085e43e5b2d5a4f4c332cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1533050050

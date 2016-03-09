@@ -23,6 +23,7 @@ public class ObstacleRecycler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// if it is time to check
+		print ("ASDF");
 		if (frameCounter > frameInterval) {
 			// check to see if an obstacle is out of range
 			checkForPassedObstacles ();
@@ -34,7 +35,7 @@ public class ObstacleRecycler : MonoBehaviour {
 
 	// checks to see if an obstacle is behind the player and frees up space if it is
 	protected void checkForPassedObstacles() {
-
+		print ("ASDF");
 		// if "i" exceeds count, end  the loop (the reason we don't do a for loop is because the list is changing length within the loop)
 		bool endReached = false;
 		// current index, unlike a for loop, the index only increments if the obstacle is NOT expired
