@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour {
 	// measured in degrees from the top (zero)
 	public float positionOnWheel;
 
-	protected Rotate wheel;
+	protected BigRoller wheel;
 
 	protected GameManagerInit manager;
 

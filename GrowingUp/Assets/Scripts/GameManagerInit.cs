@@ -5,7 +5,7 @@ public class GameManagerInit : MonoBehaviour {
 
     PlayerScript player;
 	ObstacleGenerator generator;
-	Rotate wheel;
+	BigRoller wheel;
 	LevelSelect levelSelect;
 
 	public PlayerScript Player{
@@ -18,7 +18,7 @@ public class GameManagerInit : MonoBehaviour {
 			return generator;
 		}
 	}
-	public Rotate Wheel {
+	public BigRoller Wheel {
 		get {
 			return wheel;
 		}
@@ -31,7 +31,7 @@ public class GameManagerInit : MonoBehaviour {
 		// get generator component
 		generator = GetComponent<ObstacleGenerator>(); // assumes the component is on this gameobject
 		// get wheel reference
-		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<Rotate>();
+		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<BigRoller>();
 		// get level select ref
 		levelSelect = GetComponent<LevelSelect>();
 

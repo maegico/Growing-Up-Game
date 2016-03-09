@@ -24,11 +24,6 @@ public class Rotate : MonoBehaviour {
     /// </summary>
 	public float rotated = 0;
 
-    //Variables for handling behavior when the player is hit
-    public bool playerHit;
-    public float timer;
-    public float rollerMultiplier;
-
     /// <summary>
     /// Returns the number of cycles completed.
     /// </summary>
@@ -47,48 +42,16 @@ public class Rotate : MonoBehaviour {
 		}
 	}
 
-    /// <summary>
-    /// Allows the gameManager to tell the wheel when the player has been hit
-    /// </summary>
-    public bool PlayerHit
-    {
-        get
-        {
-            return playerHit;
-        }
-
-        set
-        {
-            playerHit = value;
-        }
-    }
-
     // Use this for initialization
-    void Start () {
-        PlayerHit = false;
-        rollerMultiplier = 0;
+    protected virtual void Start () {
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
         // update total
-        if (!playerHit)
-        {
-            rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-        }
-        //If the player is hit, the wheel rolls backwards, then then stops and spins back up to full speed over the course of 3 seconds
-        else
-        {
-            timer += Time.deltaTime;
-            rollerMultiplier = -1 * Mathf.Cos(Mathf.PI * timer / 3);
-            rotated += rollerMultiplier * Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-            if (timer > 3)
-            {
-                playerHit = false;
-                timer = 0;
-                rollerMultiplier = 0;
-            }
-        }
+        rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
+    
 		// rotate using value based on time
         transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
         //transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));
