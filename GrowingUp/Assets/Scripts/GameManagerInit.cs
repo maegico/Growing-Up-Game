@@ -49,7 +49,7 @@ public class GameManagerInit : MonoBehaviour {
 			float obsPos = wheel.rotated;
 
 			// check to see if the obstacle is in line with the player
-			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+5) {
+			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+wheel.RotationSpeed*Time.deltaTime) {
 
 				// check if the obstacle is in the player's lane
 				// maybe check for this first...
