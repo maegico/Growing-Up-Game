@@ -42,6 +42,7 @@ public class BigRoller : Rotate {
 	
 	// Update is called once per frame
 	protected override void Update () {
+
 		// update total
 		if (!playerHit)
 		{
@@ -60,6 +61,10 @@ public class BigRoller : Rotate {
 				rollerMultiplier = 0;
 			}
 		}
+
+		// debug 
+		rotatedDebug = rotated;
+
 		// rotate using value based on time
 		transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
 		//transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));

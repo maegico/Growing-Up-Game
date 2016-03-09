@@ -46,16 +46,14 @@ public class GameManagerInit : MonoBehaviour {
 		foreach(Obstacle obs in generator.Obstacles) {
 
 			// get the current position of the obstacle
-			float obsPos = wheel.rotated;
+			float obsPos = wheel.DistanceRotated + obs.positionOnWheel;
 
 			// check to see if the obstacle is in line with the player
 			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+wheel.RotationSpeed*Time.deltaTime*360) {
 
 				// check if the obstacle is in the player's lane
-				// maybe check for this first...
 				if (obs.currentLane == player.currentLane) {
                     // collision!
-                    //print("collision");
                     //levelSelect.MainMenu();
                     HitPlayer();
 				}

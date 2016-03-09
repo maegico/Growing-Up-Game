@@ -10,6 +10,13 @@ public class ObstacleGenerator : MonoBehaviour
     float timer;
     List<Obstacle> obstacles;
     public Object obstaclePrefab;
+	protected int maxObstacles = 50;
+	protected Quaternion flipQuat;
+	protected Vector3 obstacleSpawnLocation;
+	BigRoller roller;
+	protected float playerOffset;
+	public float ObstacleSpawnInterval; // set in inspector
+
     //GameManagerInit gm;
 
     public List<Obstacle> Obstacles
@@ -24,25 +31,40 @@ public class ObstacleGenerator : MonoBehaviour
     void Start()
     {
         //gm = GetComponent<GameManagerInit>();
-        timer = 3;
+		timer = ObstacleSpawnInterval;
         obstacles = new List<Obstacle>();
         // for now we'll fill this list with the one obstacle in the game
-        obstacles.Add(GameObject.FindObjectOfType<Obstacle>());
+		if (GameObject.FindObjectOfType<Obstacle>() != null) obstacles.Add(GameObject.FindObjectOfType<Obstacle>());
+		obstacleSpawnLocation = new Vector3 (0, -981.5f, 1.05f);
+		flipQuat = Quaternion.Euler (180, 0, 0);
+		roller = GetComponent<GameManagerInit> ().Wheel;
+		playerOffset = GetComponent<GameManagerInit> ().Player.posOnWheel;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (obstacles.Count < 5 && timer <= 0)
+		if (obstacles.Count < maxObstacles && timer <= 0)
         {
-            Object temp = Instantiate(obstaclePrefab, new Vector3(0, 0, 1.05f), Quaternion.identity);
-            //not sure why this is giving me errors
-            obstacles.Add(((GameObject)temp).GetComponent<Obstacle>());
-            //we will see if this script works
-            obstacles[obstacles.Count - 1].transform.SetParent(GameObject.FindGameObjectWithTag("Roller").transform);
+			// create a new obstacle
+			Object temp = Instantiate(obstaclePrefab, obstacleSpawnLocation, flipQuat);
+			// get the Obstacle component
+			Obstacle newObstacle = ((GameObject)temp).GetComponent<Obstacle>();
+			// parent the obstacle to the wheel
+			newObstacle.transform.SetParent(roller.transform);
+			// determine where the obstacle appears
+			float angleOfOriginalWheelTop = roller.DistanceRotated%360;
+			float mysteryOffset = 11f; // there's a weird offset bug so I'm just going to hardcode a value for now
+			// interestingly, this offset is equal to the player's distance from the top of the wheel,
+			// but the in theory the player position is already factored into the calculation...
+			// set the obstacle's position on wheel value to the position on the wheel where it spawned
+			newObstacle.positionOnWheel = (180 - mysteryOffset - angleOfOriginalWheelTop)%360;
+            // add obstacle to the list
+            obstacles.Add(newObstacle);
+            
             //Generate Obstacle
-            timer = 3;
+			timer = ObstacleSpawnInterval;
         }
     }
 }

@@ -22,7 +22,7 @@ public class Rotate : MonoBehaviour {
     /// <summary>
     /// Current distance in terms of degrees.
     /// </summary>
-	public float rotated = 0;
+	protected float rotated = 0;
 
     /// <summary>
     /// Returns the number of cycles completed.
@@ -42,6 +42,9 @@ public class Rotate : MonoBehaviour {
 		}
 	}
 
+	// use this public variable for debugging in this inspector
+	public float rotatedDebug = 0f;
+
     // Use this for initialization
     protected virtual void Start () {
 		
@@ -51,6 +54,7 @@ public class Rotate : MonoBehaviour {
 	protected virtual void Update () {
         // update total
         rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
+		rotatedDebug = rotated;
     
 		// rotate using value based on time
         transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);

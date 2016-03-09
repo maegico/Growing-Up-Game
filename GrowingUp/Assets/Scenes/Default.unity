@@ -524,7 +524,7 @@ MonoBehaviour:
   RotationAxis: {x: 1, y: 0, z: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   RotationSpeed: 0.02
-  rotated: 0
+  rotatedDebug: 0
   timer: 0
   rollerMultiplier: 0
   playerHit: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   RotationAxis: {x: 1, y: 0, z: 0}
   InitialRotation: {x: 0, y: 0, z: 90}
   RotationSpeed: 0.02
-  rotated: 0
+  rotatedDebug: 0
   timer: 0
   rollerMultiplier: 0
   playerHit: 0
@@ -744,6 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 183308, guid: c44e85b0919387c46ab1f363602efb5e, type: 2}
+  ObstacleSpawnInterval: 1
 --- !u!114 &1455279583
 MonoBehaviour:
   m_ObjectHideFlags: 0
