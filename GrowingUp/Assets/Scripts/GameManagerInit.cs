@@ -68,12 +68,14 @@ public class GameManagerInit : MonoBehaviour {
 		//if (player.posOnWheel + 
 	}
 
+	// create some obstacles before the game starts so that its not boring
 	protected void CreateStartingObstacles() {
 		// if already run, return without doing anything
 		if (obstaclesPregenerated) return;
-		float startingRotation = 180f;
+		float gameStartRotation = 180f;
 		float rotationCounter = 0f;
-		while (rotationCounter < startingRotation) {
+		// go until the wheel has arrived at the correct starting location for the game
+		while (rotationCounter < gameStartRotation) {
 			// spawn distance is the time interval for spawn in seconds times the wheel speed in degrees / second
 			float spawnDist = generator.ObstacleSpawnInterval * wheel.RotationSpeed * 360f;
 			// rotate one obstacle spawn distance
