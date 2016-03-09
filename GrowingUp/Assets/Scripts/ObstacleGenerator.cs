@@ -47,24 +47,33 @@ public class ObstacleGenerator : MonoBehaviour
         timer -= Time.deltaTime;
 		if (obstacles.Count < maxObstacles && timer <= 0)
         {
-			// create a new obstacle
-			Object temp = Instantiate(obstaclePrefab, obstacleSpawnLocation, flipQuat);
-			// get the Obstacle component
-			Obstacle newObstacle = ((GameObject)temp).GetComponent<Obstacle>();
-			// parent the obstacle to the wheel
-			newObstacle.transform.SetParent(roller.transform);
-			// determine where the obstacle appears
-			float angleOfOriginalWheelTop = roller.DistanceRotated%360;
-			float mysteryOffset = 11f; // there's a weird offset bug so I'm just going to hardcode a value for now
-			// interestingly, this offset is equal to the player's distance from the top of the wheel,
-			// but the in theory the player position is already factored into the calculation...
-			// set the obstacle's position on wheel value to the position on the wheel where it spawned
-			newObstacle.positionOnWheel = (180 - mysteryOffset - angleOfOriginalWheelTop)%360;
-            // add obstacle to the list
-            obstacles.Add(newObstacle);
+			//Generate Obstacle
+			AddObstacle ();
             
-            //Generate Obstacle
+            // reset timer
 			timer = ObstacleSpawnInterval;
         }
     }
+
+	public Obstacle AddObstacle() {
+		// create a new obstacle
+		Object temp = Instantiate(obstaclePrefab, obstacleSpawnLocation, flipQuat);
+		// get the Obstacle component
+		Obstacle newObstacle = ((GameObject)temp).GetComponent<Obstacle>();
+		// parent the obstacle to the wheel
+		newObstacle.transform.SetParent(roller.transform);
+		// tell the obstacle its "kill point" after it passes the player
+		newObstacle.KillPoint = roller.DistanceRotated + 220f;
+		// determine where the obstacle appears
+		float angleOfOriginalWheelTop = roller.DistanceRotated%360;
+		float mysteryOffset = 11f; // there's a weird offset bug so I'm just going to hardcode a value for now
+		// interestingly, this offset is equal to the player's distance from the top of the wheel,
+		// but the in theory the player position is already factored into the calculation...
+		// set the obstacle's position on wheel value to the position on the wheel where it spawned
+		newObstacle.positionOnWheel = (180 - mysteryOffset - angleOfOriginalWheelTop)%360;
+		// add obstacle to the list
+		obstacles.Add(newObstacle);
+		// return
+		return newObstacle;
+	}
 }

@@ -54,12 +54,19 @@ public class Rotate : MonoBehaviour {
 	protected virtual void Update () {
         // update total
         rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-		rotatedDebug = rotated;
+		rotatedDebug = rotated; // debug
     
-		// rotate using value based on time
+		// rotate GameObject using value
         transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
-        //transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));
 
 		// on-screen rotation is tied to the value
+	}
+
+	public void ManualRotate(float distanceToTurn) {
+		// update total
+		rotated += distanceToTurn;
+		rotatedDebug = rotated; // debug
+		// rotate GameObject
+		transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
 	}
 }

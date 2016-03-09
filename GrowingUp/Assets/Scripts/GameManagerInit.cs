@@ -8,6 +8,8 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
 
+	protected bool obstaclesPregenerated = false;
+
 	public PlayerScript Player{
 		get {
 			return player;
@@ -41,6 +43,10 @@ public class GameManagerInit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// run once if everything is loaded
+		if (!obstaclesPregenerated) {
+			CreateStartingObstacles ();
+		}
 
 		// check collisions
 		foreach(Obstacle obs in generator.Obstacles) {
@@ -60,6 +66,26 @@ public class GameManagerInit : MonoBehaviour {
 			}
 		}
 		//if (player.posOnWheel + 
+	}
+
+	protected void CreateStartingObstacles() {
+		// if already run, return without doing anything
+		if (obstaclesPregenerated) return;
+		float startingRotation = 180f;
+		float rotationCounter = 0f;
+		while (rotationCounter < startingRotation) {
+			// spawn distance is the time interval for spawn in seconds times the wheel speed in degrees / second
+			float spawnDist = generator.ObstacleSpawnInterval * wheel.RotationSpeed * 360f;
+			// rotate one obstacle spawn distance
+			wheel.ManualRotate (spawnDist);
+			// increment counter
+			rotationCounter += spawnDist;
+			// create obstacle the normal way
+			generator.AddObstacle();
+			// distance rotated updates itself
+		}
+		// on complete
+		obstaclesPregenerated = true;
 	}
 
     void HitPlayer()

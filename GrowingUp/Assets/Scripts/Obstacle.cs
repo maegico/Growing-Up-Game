@@ -14,6 +14,18 @@ public class Obstacle : MonoBehaviour {
 
 	protected GameManagerInit manager;
 
+	// when the wheel reaches this value, destroy the obstacle
+	protected float killPoint = 0f;
+
+	public float KillPoint {
+		get {
+			return killPoint;
+		}
+		set {
+			killPoint = value;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
         // set initial states
