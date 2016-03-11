@@ -8,6 +8,7 @@ TagManager:
   - player
   - Roller
   - PlayerFrame
+  - MainUI
   layers:
   - Default
   - TransparentFX
