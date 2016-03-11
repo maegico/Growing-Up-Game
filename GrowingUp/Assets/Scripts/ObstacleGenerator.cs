@@ -9,7 +9,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     float timer;
     List<Obstacle> obstacles;
-    public Object obstaclePrefab;
+    public Object[] obstaclePrefabs;
 	protected int maxObstacles = 50;
 	protected Quaternion flipQuat;
 	protected Vector3 obstacleSpawnLocation;
@@ -56,8 +56,9 @@ public class ObstacleGenerator : MonoBehaviour
     }
 
 	public Obstacle AddObstacle() {
+        int obsIdx = (int)Random.Range(0, obstaclePrefabs.Length);
 		// create a new obstacle
-		Object temp = Instantiate(obstaclePrefab, obstacleSpawnLocation, flipQuat);
+		Object temp = Instantiate(obstaclePrefabs[obsIdx], obstacleSpawnLocation, flipQuat);
 		// get the Obstacle component
 		Obstacle newObstacle = ((GameObject)temp).GetComponent<Obstacle>();
 		// parent the obstacle to the wheel

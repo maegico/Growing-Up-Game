@@ -730,6 +730,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041423976}
+--- !u!1001 &1061262950
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.58443928
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 32.3660889
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 143.018845
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -.131590396
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -7.4505806e-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 8.97759236e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.991304159
+      objectReference: {fileID: 0}
+    - target: {fileID: 416938, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1107168604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53499cbbc131848429e45a70a77337fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 183308, guid: c44e85b0919387c46ab1f363602efb5e, type: 2}
+  obstaclePrefabs:
+  - {fileID: 183308, guid: c44e85b0919387c46ab1f363602efb5e, type: 2}
+  - {fileID: 121578, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
   ObstacleSpawnInterval: 1
 --- !u!114 &1455279583
 MonoBehaviour:
