@@ -8,6 +8,17 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
 
+    #region Audio Work in Progress
+    // Audio Variables
+
+    /// <summary>
+    /// The audio listener...
+    /// </summary>
+    public AudioListener ears;
+
+
+    #endregion
+
     public float stressDistance;        // Distance "life's stress" is from player
     const float maxDistance = 20;       // Maximum distance "life's stress" can be from the player
 
@@ -114,4 +125,24 @@ public class GameManagerInit : MonoBehaviour {
             player.HitPlayer();
         }
     }
+
+    #region Background Music
+
+    /// <summary>
+    /// Fade the melody in. Test Method.
+    /// </summary>
+    public void FadeIn()
+    {
+
+    }
+
+    /// <summary>
+    /// Fade the melody out. Test Method.
+    /// </summary>
+    public void FadeOut()
+    {
+        
+    }
+
+    #endregion
 }
