@@ -8,15 +8,40 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
 
-    #region Audio Work in Progress
+    #region Audio Variables - Work in Progress
+    /*
     // Audio Variables
 
     /// <summary>
     /// The audio listener...
     /// </summary>
-    public AudioListener ears;
+    public AudioListener Listener;
 
+    /// <summary>
+    /// Bass line. Test variable.
+    /// </summary>
+    public AudioSource bassTrack;
 
+    /// <summary>
+    /// Melody line. Test variable.
+    /// </summary>
+    public AudioSource melodyTrack;
+
+    /// <summary>
+    /// Bass insert. Test variable.
+    /// </summary>
+    //public AudioClip Bass;
+
+    /// <summary>
+    /// Melody insert. Test variable.
+    /// </summary>
+    //public AudioClip Melody;
+
+    /// <summary>
+    /// Location the audio will play at.
+    /// </summary>
+    //public Transform AudioPosition;
+    */
     #endregion
 
     public float stressDistance;        // Distance "life's stress" is from player
@@ -56,6 +81,10 @@ public class GameManagerInit : MonoBehaviour {
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
 
         stressDistance = maxDistance;
+
+        // Audio test stuff
+        //bassTrack.clip = Bass;
+        //melodyTrack.clip = Melody;
     }
 
     // Update is called once per frame
@@ -126,14 +155,14 @@ public class GameManagerInit : MonoBehaviour {
         }
     }
 
-    #region Background Music
-
+    #region Background Music Methods - Work in Progress
+    /*
     /// <summary>
     /// Fade the melody in. Test Method.
     /// </summary>
     public void FadeIn()
     {
-
+        
     }
 
     /// <summary>
@@ -143,6 +172,6 @@ public class GameManagerInit : MonoBehaviour {
     {
         
     }
-
+    */
     #endregion
 }
