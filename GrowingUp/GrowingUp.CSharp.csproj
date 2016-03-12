@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BigRoller.cs" />
     <Compile Include="Assets\Scripts\GameManagerInit.cs" />
     <Compile Include="Assets\Scripts\Lanes.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\MenuUI.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\ObstacleGenerator.cs" />
+    <Compile Include="Assets\Scripts\ObstacleRecycler.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
