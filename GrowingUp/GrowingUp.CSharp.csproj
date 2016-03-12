@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BigRoller.cs" />
     <Compile Include="Assets\Scripts\GameManagerInit.cs" />
+    <Compile Include="Assets\Scripts\GameplayUI.cs" />
     <Compile Include="Assets\Scripts\Lanes.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\Location.cs" />
