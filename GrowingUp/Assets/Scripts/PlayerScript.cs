@@ -31,8 +31,7 @@ public class PlayerScript : MonoBehaviour {
     public Texture2D[] playerFrames;           // Player's textures
     public GameObject playerImage;             // Player's current texture
     public bool beenHit;                       // True is player is currently in "being hit" animation
-    float hitTimer;                            // Timer for hit animation
-    public float playerHealth;                 // Player's current health
+    float hitTimer;
 
 
 
@@ -50,7 +49,6 @@ public class PlayerScript : MonoBehaviour {
         initialHeight = gameObject.transform.position.y;
         playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
         beenHit = false;
-        playerHealth = 30;
     }
 	
 	// Update is called once per frame
