@@ -22,12 +22,7 @@ public class Rotate : MonoBehaviour {
     /// <summary>
     /// Current distance in terms of degrees.
     /// </summary>
-	public float rotated = 0;
-
-    //Variables for handling behavior when the player is hit
-    public bool playerHit;
-    public float timer;
-    public float rollerMultiplier;
+	protected float rotated = 0;
 
     /// <summary>
     /// Returns the number of cycles completed.
@@ -47,52 +42,31 @@ public class Rotate : MonoBehaviour {
 		}
 	}
 
-    /// <summary>
-    /// Allows the gameManager to tell the wheel when the player has been hit
-    /// </summary>
-    public bool PlayerHit
-    {
-        get
-        {
-            return playerHit;
-        }
-
-        set
-        {
-            playerHit = value;
-        }
-    }
+	// use this public variable for debugging in this inspector
+	public float rotatedDebug = 0f;
 
     // Use this for initialization
-    void Start () {
-        PlayerHit = false;
-        rollerMultiplier = 0;
+    protected virtual void Start () {
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
         // update total
-        if (!playerHit)
-        {
-            rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-        }
-        //If the player is hit, the wheel rolls backwards, then then stops and spins back up to full speed over the course of 3 seconds
-        else
-        {
-            timer += Time.deltaTime;
-            rollerMultiplier = -1 * Mathf.Cos(Mathf.PI * timer / 3);
-            rotated += rollerMultiplier * Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-            if (timer > 3)
-            {
-                playerHit = false;
-                timer = 0;
-                rollerMultiplier = 0;
-            }
-        }
-		// rotate using value based on time
+        rotated += Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
+		rotatedDebug = rotated; // debug
+    
+		// rotate GameObject using value
         transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
-        //transform.rotation = Quaternion.Euler(new Vector3(-rotated,0,90));
 
 		// on-screen rotation is tied to the value
+	}
+
+	public void ManualRotate(float distanceToTurn) {
+		// update total
+		rotated += distanceToTurn;
+		rotatedDebug = rotated; // debug
+		// rotate GameObject
+		transform.rotation = Quaternion.Euler(-rotated*RotationAxis + InitialRotation);
 	}
 }

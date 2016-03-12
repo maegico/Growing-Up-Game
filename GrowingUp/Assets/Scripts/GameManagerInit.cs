@@ -3,12 +3,12 @@ using System.Collections;
 
 public class GameManagerInit : MonoBehaviour {
 
-    PlayerScript player;                // Reference to player object
-	ObstacleGenerator generator;        // Reference to obstacle generator
-	Rotate wheel;                       // Reference to roller
-	LevelSelect levelSelect;            
-    public float stressDistance;        // Distance "life's stress" is from player
-    const float maxDistance = 30;       // Maximum distance "life's stress" can be from the player
+    PlayerScript player;
+	ObstacleGenerator generator;
+	BigRoller wheel;
+	LevelSelect levelSelect;
+
+	protected bool obstaclesPregenerated = false;
 
 	public PlayerScript Player{
 		get {
@@ -20,7 +20,7 @@ public class GameManagerInit : MonoBehaviour {
 			return generator;
 		}
 	}
-	public Rotate Wheel {
+	public BigRoller Wheel {
 		get {
 			return wheel;
 		}
@@ -33,50 +33,61 @@ public class GameManagerInit : MonoBehaviour {
 		// get generator component
 		generator = GetComponent<ObstacleGenerator>(); // assumes the component is on this gameobject
 		// get wheel reference
-		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<Rotate>();
+		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<BigRoller>();
 		// get level select ref
 		levelSelect = GetComponent<LevelSelect>();
 
         // get actual player angle
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
-
-        stressDistance = 40;
     }
 	
 	// Update is called once per frame
 	void Update () {
+		// run once if everything is loaded
+		if (!obstaclesPregenerated) {
+			CreateStartingObstacles ();
+		}
 
 		// check collisions
 		foreach(Obstacle obs in generator.Obstacles) {
 
 			// get the current position of the obstacle
-			float obsPos = wheel.rotated;
+			float obsPos = wheel.DistanceRotated + obs.positionOnWheel;
 
 			// check to see if the obstacle is in line with the player
-			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+5) {
+			if (obsPos%360 > player.posOnWheel && obsPos%360 < player.posOnWheel+wheel.RotationSpeed*Time.deltaTime*360) {
 
 				// check if the obstacle is in the player's lane
-				// maybe check for this first...
 				if (obs.currentLane == player.currentLane) {
                     // collision!
-                    //print("collision");
                     //levelSelect.MainMenu();
                     HitPlayer();
 				}
 			}
 		}
-        if (!player.beenHit)
-        {
-            stressDistance += Time.deltaTime;
-            if (stressDistance > maxDistance) stressDistance = maxDistance;
-        }
-        else
-        {
-            stressDistance -= Time.deltaTime;
-            if (stressDistance < 0) stressDistance = 0;
-        }
-        if (stressDistance < 5) player.playerHealth -= Time.deltaTime;
 		//if (player.posOnWheel + 
+	}
+
+	// create some obstacles before the game starts so that its not boring
+	protected void CreateStartingObstacles() {
+		// if already run, return without doing anything
+		if (obstaclesPregenerated) return;
+		float gameStartRotation = 180f;
+		float rotationCounter = 0f;
+		// go until the wheel has arrived at the correct starting location for the game
+		while (rotationCounter < gameStartRotation) {
+			// spawn distance is the time interval for spawn in seconds times the wheel speed in degrees / second
+			float spawnDist = generator.ObstacleSpawnInterval * wheel.RotationSpeed * 360f;
+			// rotate one obstacle spawn distance
+			wheel.ManualRotate (spawnDist);
+			// increment counter
+			rotationCounter += spawnDist;
+			// create obstacle the normal way
+			generator.AddObstacle();
+			// distance rotated updates itself
+		}
+		// on complete
+		obstaclesPregenerated = true;
 	}
 
     void HitPlayer()
