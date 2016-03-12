@@ -8,7 +8,11 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
 
-	protected bool obstaclesPregenerated = false;
+    public float stressDistance;        // Distance "life's stress" is from player
+    const float maxDistance = 20;       // Maximum distance "life's stress" can be from the player
+
+
+    protected bool obstaclesPregenerated = false;
 
 	public PlayerScript Player{
 		get {
@@ -39,10 +43,11 @@ public class GameManagerInit : MonoBehaviour {
 
         // get actual player angle
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
+        stressDistance = maxDistance;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		// run once if everything is loaded
 		if (!obstaclesPregenerated) {
 			CreateStartingObstacles ();
@@ -65,7 +70,17 @@ public class GameManagerInit : MonoBehaviour {
 				}
 			}
 		}
-		//if (player.posOnWheel + 
+        if (!player.beenHit)
+        {
+            stressDistance += Time.deltaTime;
+            if (stressDistance > maxDistance) stressDistance = maxDistance;
+        }
+        else
+        {
+            stressDistance -= Time.deltaTime;
+            if (stressDistance < 0) stressDistance = 0;
+        }
+        if (stressDistance < 5) player.playerHealth -= Time.deltaTime;
 	}
 
 	// create some obstacles before the game starts so that its not boring
