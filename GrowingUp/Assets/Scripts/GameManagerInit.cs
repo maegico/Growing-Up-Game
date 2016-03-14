@@ -7,6 +7,7 @@ public class GameManagerInit : MonoBehaviour {
 	ObstacleGenerator generator;
 	BigRoller wheel;
 	LevelSelect levelSelect;
+    GameplayUI UI;
 
     #region Audio Variables - Work in Progress
     /*
@@ -66,8 +67,16 @@ public class GameManagerInit : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
+    public GameplayUI UI1
+    {
+        get
+        {
+            return UI;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		// get player reference
         player = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerScript>();
 		// get generator component
@@ -76,11 +85,14 @@ public class GameManagerInit : MonoBehaviour {
 		wheel = GameObject.FindGameObjectWithTag("Roller").GetComponent<BigRoller>();
 		// get level select ref
 		levelSelect = GetComponent<LevelSelect>();
-
+        // get UI ref
+        UI = GetComponent<GameplayUI>();
         // get actual player angle
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
 
         stressDistance = maxDistance;
+
+        
 
         // Audio test stuff
         //bassTrack.clip = Bass;
@@ -121,7 +133,11 @@ public class GameManagerInit : MonoBehaviour {
             stressDistance -= Time.deltaTime;
             if (stressDistance < 0) stressDistance = 0;
         }
-        if (stressDistance < 5) player.playerHealth -= Time.deltaTime;
+        if (stressDistance < 5)
+        {
+            player.playerHealth -= Time.deltaTime;
+            UI.BarWidth = player.playerHealth * 96.0f / 30.0f;
+        }
 	}
 
 	// create some obstacles before the game starts so that its not boring

@@ -9,6 +9,8 @@ TagManager:
   - Roller
   - PlayerFrame
   - MainUI
+  - UI
+  - ChildhoodBar
   layers:
   - Default
   - TransparentFX

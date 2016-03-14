@@ -33,6 +33,15 @@ public class PlayerScript : MonoBehaviour {
     public bool beenHit;                       // True is player is currently in "being hit" animation
     float hitTimer;
     public float playerHealth;
+    private const float playerMaxHealth = 30;
+
+    public static float PlayerMaxHealth
+    {
+        get
+        {
+            return playerMaxHealth;
+        }
+    }
 
 
     // Use this for initialization
@@ -49,7 +58,7 @@ public class PlayerScript : MonoBehaviour {
         initialHeight = gameObject.transform.position.y;
         playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
         beenHit = false;
-        playerHealth = 30;
+        playerHealth = PlayerMaxHealth;
     }
 	
 	// Update is called once per frame

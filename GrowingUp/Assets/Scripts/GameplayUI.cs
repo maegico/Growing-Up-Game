@@ -7,6 +7,8 @@ public class GameplayUI : MonoBehaviour
 {
 
     public Canvas canvas; // set in inspector
+    public GameObject childhoodBar; // set in inspector
+    private float barWidth; // width of the childhood bar
 
     // this is what you are setting to the date string
     public Text scoreCounter; // set in inspector
@@ -30,10 +32,25 @@ public class GameplayUI : MonoBehaviour
 
     protected GameManagerInit manager;
 
+    public float BarWidth
+    {
+        get
+        {
+            return barWidth;
+        }
+
+        set
+        {
+            barWidth = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
         manager = GetComponent<GameManagerInit>();
+        childhoodBar = GameObject.FindGameObjectWithTag("ChildhoodBar");
+        BarWidth = 96;
     }
 
     // Update is called once per frame
@@ -43,6 +60,9 @@ public class GameplayUI : MonoBehaviour
         date = (int)(manager.Wheel.DistanceRotated * degreesRotatedPerDay);
         // set the UI to the date
         scoreCounter.text = ConvertIntToDateString(date);
+
+        RectTransform rt = childhoodBar.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(BarWidth, rt.rect.height);
     }
 
     string ConvertIntToDateString(int d)
