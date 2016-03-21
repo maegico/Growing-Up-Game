@@ -34,6 +34,8 @@ public class PlayerScript : MonoBehaviour {
     float hitTimer;
     public float playerHealth;
     private const float playerMaxHealth = 30;
+    public AudioClip hitSound;
+    public AudioSource source;
 
     public static float PlayerMaxHealth
     {
@@ -59,6 +61,7 @@ public class PlayerScript : MonoBehaviour {
         playerImage = GameObject.FindGameObjectWithTag("PlayerFrame");
         beenHit = false;
         playerHealth = PlayerMaxHealth;
+        source = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -208,6 +211,7 @@ public class PlayerScript : MonoBehaviour {
     public void HitPlayer()
     {
         beenHit = true;
+        source.PlayOneShot(hitSound);
     }
 
 	// moves one lane to the right based on what lane the player is in
