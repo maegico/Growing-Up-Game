@@ -8,43 +8,7 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
     GameplayUI UI;
-
-    #region Audio Variables - Work in Progress
-    /*
-    // Audio Variables
-
-    /// <summary>
-    /// The audio listener...
-    /// </summary>
-    public AudioListener Listener;
-
-    /// <summary>
-    /// Bass line. Test variable.
-    /// </summary>
-    public AudioSource bassTrack;
-
-    /// <summary>
-    /// Melody line. Test variable.
-    /// </summary>
-    public AudioSource melodyTrack;
-
-    /// <summary>
-    /// Bass insert. Test variable.
-    /// </summary>
-    //public AudioClip Bass;
-
-    /// <summary>
-    /// Melody insert. Test variable.
-    /// </summary>
-    //public AudioClip Melody;
-
-    /// <summary>
-    /// Location the audio will play at.
-    /// </summary>
-    //public Transform AudioPosition;
-    */
-    #endregion
-
+    
     public float stressDistance;        // Distance "life's stress" is from player
     const float maxDistance = 20;       // Maximum distance "life's stress" can be from the player
 
@@ -170,24 +134,4 @@ public class GameManagerInit : MonoBehaviour {
             player.HitPlayer();
         }
     }
-
-    #region Background Music Methods - Work in Progress
-    /*
-    /// <summary>
-    /// Fade the melody in. Test Method.
-    /// </summary>
-    public void FadeIn()
-    {
-        
-    }
-
-    /// <summary>
-    /// Fade the melody out. Test Method.
-    /// </summary>
-    public void FadeOut()
-    {
-        
-    }
-    */
-    #endregion
 }
