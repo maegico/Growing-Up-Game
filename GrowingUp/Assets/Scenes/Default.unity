@@ -427,7 +427,10 @@ MonoBehaviour:
   beenHit: 0
   playerHealth: 0
   hitSound: {fileID: 8300000, guid: d60c608b71096fa4c87e930c42c0e5d0, type: 3}
+  jumpSound: {fileID: 8300000, guid: d60b226d652b3634a8ed7c608a54bca1, type: 3}
   source: {fileID: 0}
+  previousHitPitch: 0
+  previousJumpPitch: 0
 --- !u!82 &466642335
 AudioSource:
   m_ObjectHideFlags: 0
@@ -593,6 +596,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

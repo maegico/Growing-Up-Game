@@ -35,8 +35,10 @@ public class PlayerScript : MonoBehaviour {
     public float playerHealth;
     private const float playerMaxHealth = 30;
     public AudioClip hitSound;
+    public AudioClip jumpSound;
     public AudioSource source;
-    public float previousPitch;
+    public float previousHitPitch;
+    public float previousJumpPitch;
 
     public static float PlayerMaxHealth
     {
@@ -63,7 +65,8 @@ public class PlayerScript : MonoBehaviour {
         beenHit = false;
         playerHealth = PlayerMaxHealth;
         source = GetComponent<AudioSource>();
-        previousPitch = 1.4f;
+        previousHitPitch = 1.4f;
+        previousJumpPitch = 1.0f;
     }
 	
 	// Update is called once per frame
@@ -74,6 +77,16 @@ public class PlayerScript : MonoBehaviour {
         {
             curState = playerState.jumping;
             initialHeight = gameObject.transform.position.y;
+            float nextJumpPitch = Random.Range(1.0f, 1.4f);
+            while (nextJumpPitch < previousJumpPitch + 0.05f && nextJumpPitch > previousJumpPitch - 0.05f)
+            {
+                nextJumpPitch = Random.Range(0.8f, 1.2f);
+            }
+            source.pitch = nextJumpPitch;
+            source.PlayOneShot(jumpSound, Random.Range(0.1f, 1.0f));
+            previousJumpPitch = nextJumpPitch;
+
+            source.PlayOneShot(jumpSound);
         }
 
 
@@ -213,14 +226,14 @@ public class PlayerScript : MonoBehaviour {
     public void HitPlayer()
     {
         beenHit = true;
-        float nextPitch = Random.Range(1.4f, 1.8f);
-        while (nextPitch < previousPitch + 0.05f && nextPitch > previousPitch - 0.05f)
+        float nextHitPitch = Random.Range(1.4f, 1.8f);
+        while (nextHitPitch < previousHitPitch + 0.05f && nextHitPitch > previousHitPitch - 0.05f)
         {
-            nextPitch = Random.Range(1.4f, 1.8f);
+            nextHitPitch = Random.Range(1.4f, 1.8f);
         }
-        source.pitch = nextPitch;
+        source.pitch = nextHitPitch;
         source.PlayOneShot(hitSound, Random.Range(0.1f, 1.0f));
-        previousPitch = nextPitch;
+        previousHitPitch = nextHitPitch;
     }
 
 	// moves one lane to the right based on what lane the player is in
