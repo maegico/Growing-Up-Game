@@ -13,7 +13,7 @@ public class LevelSelect : MonoBehaviour {
         Levels = new Dictionary<string, int>();
         Levels.Add("MainMenu", 0); Levels.Add("Main Menu", 0);
         Levels.Add("Game", 1); Levels.Add("Default", 1);
-        AudioController = GameObject.Find("AudioController").GetComponent<AudioControl>();
+        //AudioController = GameObject.Find("AudioController").GetComponent<AudioControl>();
     }
 	
 	// Update is called once per frame

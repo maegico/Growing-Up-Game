@@ -36,6 +36,7 @@ public class PlayerScript : MonoBehaviour {
     private const float playerMaxHealth = 30;
     public AudioClip hitSound;
     public AudioSource source;
+    public float previousPitch;
 
     public static float PlayerMaxHealth
     {
@@ -62,6 +63,7 @@ public class PlayerScript : MonoBehaviour {
         beenHit = false;
         playerHealth = PlayerMaxHealth;
         source = GetComponent<AudioSource>();
+        previousPitch = 1.4f;
     }
 	
 	// Update is called once per frame
@@ -211,7 +213,14 @@ public class PlayerScript : MonoBehaviour {
     public void HitPlayer()
     {
         beenHit = true;
-        source.PlayOneShot(hitSound);
+        float nextPitch = Random.Range(1.4f, 1.8f);
+        while (nextPitch < previousPitch + 0.05f && nextPitch > previousPitch - 0.05f)
+        {
+            nextPitch = Random.Range(1.4f, 1.8f);
+        }
+        source.pitch = nextPitch;
+        source.PlayOneShot(hitSound, Random.Range(0.1f, 1.0f));
+        previousPitch = nextPitch;
     }
 
 	// moves one lane to the right based on what lane the player is in
