@@ -102,7 +102,24 @@ public class GameManagerInit : MonoBehaviour {
             player.playerHealth -= Time.deltaTime;
             UI.BarWidth = player.playerHealth * 96.0f / 30.0f;
         }
-	}
+        UI.stressOverlay[0].color = new Color(0, 0, 0, (maxDistance - stressDistance) / 10);
+        if (stressDistance < 10)
+        {
+            UI.stressOverlay[1].color = new Color(0, 0, 0, (maxDistance - stressDistance - 10) / 5);
+        }
+        else
+        {
+            UI.stressOverlay[1].color = new Color(0, 0, 0, 0);
+        }
+        if (stressDistance < 15)
+        {
+            UI.stressOverlay[2].color = new Color(0, 0, 0, (maxDistance - stressDistance - 15) / 5);
+        }
+        else
+        {
+            UI.stressOverlay[2].color = new Color(0, 0, 0, 0);
+        }
+    }
 
 	// create some obstacles before the game starts so that its not boring
 	protected void CreateStartingObstacles() {

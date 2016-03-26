@@ -8,6 +8,7 @@ public class GameplayUI : MonoBehaviour
 
     public Canvas canvas; // set in inspector
     public GameObject childhoodBar; // set in inspector
+    public RawImage[] stressOverlay; // set in inspector
     private float barWidth; // width of the childhood bar
 
     // this is what you are setting to the date string
@@ -44,6 +45,7 @@ public class GameplayUI : MonoBehaviour
             barWidth = value;
         }
     }
+    
 
     // Use this for initialization
     void Start()
@@ -63,6 +65,8 @@ public class GameplayUI : MonoBehaviour
 
         RectTransform rt = childhoodBar.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(BarWidth, rt.rect.height);
+
+        
     }
 
     string ConvertIntToDateString(int d)
