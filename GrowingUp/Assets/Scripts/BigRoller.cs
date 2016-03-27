@@ -52,9 +52,9 @@ public class BigRoller : Rotate {
 		else
 		{
 			timer += Time.deltaTime;
-			rollerMultiplier = -1 * Mathf.Cos(Mathf.PI * timer / 3);
+			rollerMultiplier = -1 * Mathf.Cos(Mathf.PI * timer / 0.5f);
 			rotated += rollerMultiplier * Mathf.Abs(RotationSpeed * cycleCoefficient * Time.deltaTime);
-			if (timer > 3)
+			if (timer > 0.5f)
 			{
 				playerHit = false;
 				timer = 0;

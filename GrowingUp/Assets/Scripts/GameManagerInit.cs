@@ -10,6 +10,7 @@ public class GameManagerInit : MonoBehaviour {
     GameplayUI UI;
     
     public float stressDistance;        // Distance "life's stress" is from player
+	public float stressSpeed;			// how fast life catches up
     const float maxDistance = 20;       // Maximum distance "life's stress" can be from the player
 
 
@@ -94,13 +95,13 @@ public class GameManagerInit : MonoBehaviour {
         }
         else
         {
-            stressDistance -= Time.deltaTime;
+            stressDistance -= stressSpeed * Time.deltaTime;
             if (stressDistance < 0) stressDistance = 0;
         }
         if (stressDistance < 5)
         {
             player.playerHealth -= Time.deltaTime;
-            UI.BarWidth = player.playerHealth * 96.0f / 30.0f;
+            UI.BarWidth = player.playerHealth / 30.0f;
         }
         UI.stressOverlay[0].color = new Color(0, 0, 0, (maxDistance - stressDistance) / 10);
         if (stressDistance < 10)
