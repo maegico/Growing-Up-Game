@@ -237,7 +237,7 @@ public class PlayerScript : MonoBehaviour {
     }
 
 	// moves one lane to the right based on what lane the player is in
-    void MoveRight()
+    public void MoveRight()
     {
         switch  (currentLane)
         {
@@ -257,7 +257,7 @@ public class PlayerScript : MonoBehaviour {
     }
 
 	// moves one lane to the left based on what lane the player is in
-    void MoveLeft()
+    public void MoveLeft()
     {
         switch (currentLane)
         {
@@ -276,4 +276,8 @@ public class PlayerScript : MonoBehaviour {
         }
 
     }
+
+	public void Jump() {
+		// code here 
+	}
 }
