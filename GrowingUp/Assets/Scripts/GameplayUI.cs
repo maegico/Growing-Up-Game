@@ -65,10 +65,10 @@ public class GameplayUI : MonoBehaviour
 
         RectTransform rt = childhoodBar.GetComponent<RectTransform>();
 		//rt.sizeDelta = new Vector2 (-4, -4);//rt.rect.height);
-		rt.anchorMax = new Vector2(BarWidth, 1);
-		rt.anchorMin = new Vector2 (1 - BarWidth, 0);
+		rt.anchorMax = new Vector2(0.5f + BarWidth/2, 1);
+		rt.anchorMin = new Vector2 (0.5f - BarWidth/2, 0);
 		rt.offsetMin = new Vector2 (2, 2);
-		rt.offsetMax = new Vector2 (2, 2);
+		rt.offsetMax = new Vector2 (-2, -2);
     }
 
     string ConvertIntToDateString(int d)

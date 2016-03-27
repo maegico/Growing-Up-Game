@@ -16,7 +16,7 @@ public class Rotate : MonoBehaviour {
 	//protected float frameRateCoefficient = 60f;
 
 	// number of rotation units per full rotation, in this case degrees
-	protected float cycleCoefficient = 360f;
+	protected float cycleCoefficient = 360.0f;
 
 	// total distance in terms of cycles - currently actually in terms of degrees
     /// <summary>

@@ -16,6 +16,7 @@ public class ObstacleGenerator : MonoBehaviour
 	BigRoller roller;
 	protected float playerOffset;
 	public float ObstacleSpawnInterval; // set in inspector
+	protected float initialObstacleSpawnInterval;
 
     //GameManagerInit gm;
 
@@ -39,13 +40,15 @@ public class ObstacleGenerator : MonoBehaviour
 		flipQuat = Quaternion.Euler (180, 0, 0);
 		roller = GetComponent<GameManagerInit> ().Wheel;
 		playerOffset = GetComponent<GameManagerInit> ().Player.posOnWheel;
+		initialObstacleSpawnInterval = ObstacleSpawnInterval;
+		//IncreaseDifficultyOverTime();
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-		if (obstacles.Count < maxObstacles && timer <= 0)
+		if (obstacles.Count < maxObstacles && timer <= 0 && roller.RotationSpeed > 0)
         {
 			//Generate Obstacle
 			AddObstacle ();
@@ -53,6 +56,9 @@ public class ObstacleGenerator : MonoBehaviour
             // reset timer
 			timer = ObstacleSpawnInterval;
         }
+
+		// spawn more obstacles
+		IncreaseDifficultyOverTime();
     }
 
 	public Obstacle AddObstacle() {
@@ -76,5 +82,8 @@ public class ObstacleGenerator : MonoBehaviour
 		obstacles.Add(newObstacle);
 		// return
 		return newObstacle;
+	}
+	public void IncreaseDifficultyOverTime() {
+		ObstacleSpawnInterval = initialObstacleSpawnInterval * ( 1.0f/Mathf.Log10(roller.DistanceRotated+10.0f) );
 	}
 }

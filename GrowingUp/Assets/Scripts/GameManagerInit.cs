@@ -120,6 +120,10 @@ public class GameManagerInit : MonoBehaviour {
         {
             UI.stressOverlay[2].color = new Color(0, 0, 0, 0);
         }
+		// check for player dead
+		if (player.playerHealth < 1) {
+			levelSelect.MainMenu();
+		}
     }
 
 	// create some obstacles before the game starts so that its not boring
@@ -130,8 +134,10 @@ public class GameManagerInit : MonoBehaviour {
 		float rotationCounter = 0f;
 		// go until the wheel has arrived at the correct starting location for the game
 		while (rotationCounter < gameStartRotation) {
+			// modify obstacle spawn interval by rotation
+			generator.IncreaseDifficultyOverTime();
 			// spawn distance is the time interval for spawn in seconds times the wheel speed in degrees / second
-			float spawnDist = generator.ObstacleSpawnInterval * wheel.RotationSpeed * 360f;
+			float spawnDist = generator.ObstacleSpawnInterval * wheel.RotationSpeed * 360.0f;
 			// rotate one obstacle spawn distance
 			wheel.ManualRotate (spawnDist);
 			// increment counter
