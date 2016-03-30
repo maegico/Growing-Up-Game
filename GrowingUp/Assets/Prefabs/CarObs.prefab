@@ -43,9 +43,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154476}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 0, y: .790000021, z: 0}
-  m_LocalScale: {x: 2.80325961, y: 2.8032589, z: 2.8032589}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalScale: {x: 2.8032596, y: 2.803259, z: 2.803259}
   m_Children: []
   m_Father: {fileID: 416938}
   m_RootOrder: 0
@@ -55,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121578}
-  m_LocalRotation: {x: -.131590396, y: -7.4505806e-09, z: 8.97759236e-08, w: -.991304159}
-  m_LocalPosition: {x: 7.58443928, y: 32.3660889, z: 143.018845}
+  m_LocalRotation: {x: -0.1315904, y: -0.000000007450581, z: 0.000000089775924, w: -0.99130416}
+  m_LocalPosition: {x: 7.5844393, y: 32.36609, z: 143.01884}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 411796}
@@ -83,7 +83,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -109,7 +109,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -171,13 +171,18 @@ MonoBehaviour:
   currentLane: 2
   changeLaneTrigger: 420
   positionOnWheel: 270
+  obsName: Car Needs Repairs
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: obsName
+      value: Car Needs Repairs
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121578}

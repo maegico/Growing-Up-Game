@@ -9,6 +9,9 @@ public class GameplayUI : MonoBehaviour
     public Canvas canvas; // set in inspector
     public GameObject childhoodBar; // set in inspector
     public RawImage[] stressOverlay; // set in inspector
+	public Text growingText; // set in inspector
+	public float growingTextDuration; // set in inspector how many seconds text grows
+	protected float growingTextTimer; // timer for the grow effect
     private float barWidth; // width of the childhood bar
 
     // this is what you are setting to the date string
@@ -53,6 +56,7 @@ public class GameplayUI : MonoBehaviour
         manager = GetComponent<GameManagerInit>();
         childhoodBar = GameObject.FindGameObjectWithTag("ChildhoodBar");
         BarWidth = 1.0f;
+		growingTextTimer = growingTextDuration + 1;
     }
 
     // Update is called once per frame
@@ -69,6 +73,9 @@ public class GameplayUI : MonoBehaviour
 		rt.anchorMin = new Vector2 (0.5f - BarWidth/2, 0);
 		rt.offsetMin = new Vector2 (2, 2);
 		rt.offsetMax = new Vector2 (-2, -2);
+		if (growingTextTimer <= growingTextDuration) {
+			emergeGrowingText ();
+		}
     }
 
     string ConvertIntToDateString(int d)
@@ -96,4 +103,17 @@ public class GameplayUI : MonoBehaviour
         }
         return (month + " " + day + ", " + year);
     }
+
+	public void showObstacleText(string message) {
+		print (message);
+		growingText.text = message;
+		growingTextTimer = 0;
+	}
+		
+	protected void emergeGrowingText() {
+		growingTextTimer += Time.deltaTime;
+		growingText.rectTransform.anchorMin = new Vector2(-1*growingTextTimer/growingTextDuration+0.5f,0f);
+		growingText.rectTransform.anchorMax = new Vector2(1*growingTextTimer/growingTextDuration+0.5f,1f);
+		growingText.color = new Color (growingText.color.r, growingText.color.g, growingText.color.b, 1 - growingTextTimer / growingTextDuration);
+	}
 }

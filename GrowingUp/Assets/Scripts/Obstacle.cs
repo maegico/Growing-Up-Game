@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour {
 	// the position of the obstacle on the wheel
 	// measured in degrees from the top (zero)
 	public float positionOnWheel;
+	public string obsName;
 
 	protected BigRoller wheel;
 

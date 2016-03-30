@@ -84,7 +84,7 @@ public class GameManagerInit : MonoBehaviour {
 				if (obs.currentLane == player.currentLane) {
                     // collision!
                     //levelSelect.MainMenu();
-                    HitPlayer();
+                    HitPlayer(obs);
 				}
 			}
 		}
@@ -150,11 +150,13 @@ public class GameManagerInit : MonoBehaviour {
 		obstaclesPregenerated = true;
 	}
 
-    void HitPlayer()
+    void HitPlayer(Obstacle obs)
     {
         if (player.beenHit == false)
         {
             wheel.PlayerHit = true;
+			UI.showObstacleText (obs.obsName);
+
             player.HitPlayer();
         }
     }

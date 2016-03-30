@@ -43,8 +43,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183974}
-  m_LocalRotation: {x: -.131590396, y: -7.4505806e-09, z: 8.97759236e-08, w: -.991304159}
-  m_LocalPosition: {x: 7.58443928, y: 32.3660889, z: 143.018845}
+  m_LocalRotation: {x: -0.1315904, y: -0.000000007450581, z: 0.000000089775924, w: -0.99130416}
+  m_LocalPosition: {x: 7.5844393, y: 32.36609, z: 143.01884}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 433314}
@@ -56,9 +56,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180134}
-  m_LocalRotation: {x: -1.15202326e-07, y: .707106709, z: -.707106829, w: -1.15202312e-07}
-  m_LocalPosition: {x: -0, y: .720000029, z: 0}
-  m_LocalScale: {x: 2.33390903, y: 2.3339088, z: 2.3339088}
+  m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
+  m_LocalPosition: {x: -0, y: 0.72, z: 0}
+  m_LocalScale: {x: 2.333909, y: 2.3339088, z: 2.3339088}
   m_Children: []
   m_Father: {fileID: 431436}
   m_RootOrder: 0
@@ -83,7 +83,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -109,7 +109,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -171,13 +171,18 @@ MonoBehaviour:
   currentLane: 2
   changeLaneTrigger: 420
   positionOnWheel: 270
+  obsName: Another Funeral
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: obsName
+      value: Another Funeral
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183974}

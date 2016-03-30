@@ -243,6 +243,7 @@ MonoBehaviour:
   currentLane: 0
   changeLaneTrigger: 60
   positionOnWheel: 0
+  obsName: 
 --- !u!1 &466642328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1099,7 @@ GameObject:
   - 222: {fileID: 1340547933}
   - 114: {fileID: 1340547932}
   m_Layer: 5
-  m_Name: Text
+  m_Name: GrowingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,8 +1117,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 582932226}
   m_RootOrder: 6
-  m_AnchorMin: {x: 0.25, y: 0.25}
-  m_AnchorMax: {x: 0.75, y: 0.75}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1133,7 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.253}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1145,7 +1146,7 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1275,6 +1276,8 @@ MonoBehaviour:
   - {fileID: 723593364}
   - {fileID: 700247898}
   - {fileID: 1931463607}
+  growingText: {fileID: 1340547932}
+  growingTextDuration: 2
   scoreCounter: {fileID: 1289692861}
   degreesRotatedPerDay: 2
   startYear: 2000
@@ -1600,7 +1603,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1755398034}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -51, y: 57, z: 377}
+  m_LocalPosition: {x: -51, y: 48, z: 377}
   m_LocalScale: {x: 124.18983, y: 124.18978, z: 549.8106}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1819,8 +1822,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1956835920}
-  m_LocalRotation: {x: -0.05556483, y: 0, z: 0, w: 0.9984551}
-  m_LocalPosition: {x: 0, y: 19, z: -33}
+  m_LocalRotation: {x: 0.052905515, y: 0, z: 0, w: 0.9985995}
+  m_LocalPosition: {x: 0, y: 30, z: -37.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
