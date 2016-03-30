@@ -1154,7 +1154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I don't wanna! Why doesn't jeremy have to do chores?
+  m_Text: I don't wanna! Why doesn't Jeremy have to do chores?
 --- !u!222 &1609355458
 CanvasRenderer:
   m_ObjectHideFlags: 0
