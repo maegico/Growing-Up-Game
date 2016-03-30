@@ -499,10 +499,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2933157}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.05241136, y: 0.141}
-  m_AnchorMax: {x: 0.93952537, y: 0.84636897}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 0, y: -2}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313548070
 MonoBehaviour:
@@ -536,7 +536,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: '          PLAY           '
 --- !u!222 &313548071
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -657,8 +657,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1439588242}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.045, y: 0.104}
-  m_AnchorMax: {x: 0.95100003, y: 0.896}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -694,7 +694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CREDITS
+  m_Text: '    CREDITS    '
 --- !u!222 &564148213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1125,8 +1125,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1433646937}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.052411355, y: 0.14500001}
-  m_AnchorMax: {x: 0.94400007, y: 0.84200007}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

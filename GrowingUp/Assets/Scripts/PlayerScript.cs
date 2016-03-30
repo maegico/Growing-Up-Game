@@ -280,4 +280,8 @@ public class PlayerScript : MonoBehaviour {
 	public void Jump() {
 		// code here 
 	}
+
+	public void DisplayWord() {
+
+	}
 }
