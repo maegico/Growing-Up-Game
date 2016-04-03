@@ -243,7 +243,9 @@ MonoBehaviour:
   currentLane: 0
   changeLaneTrigger: 60
   positionOnWheel: 0
-  obsName: 
+  obsName: []
+  obstacleTextures: []
+  obstacleImage: {fileID: 0}
 --- !u!1 &466642328
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,11 +356,52 @@ MonoBehaviour:
   animationTimer: 0
   playerFrame: 0
   playerFrames:
-  - {fileID: 2800000, guid: eb657bdfa61387545854c58fe67e8fee, type: 3}
-  - {fileID: 2800000, guid: 1716fccb2fdd54745b8d48a9ecf83699, type: 3}
-  - {fileID: 2800000, guid: eb657bdfa61387545854c58fe67e8fee, type: 3}
-  - {fileID: 2800000, guid: 2520e1140c6031043b039885d3686cf1, type: 3}
+  - {fileID: 2800000, guid: 58a5a86b102a40c48845bf13298c11cf, type: 3}
+  - {fileID: 2800000, guid: 8470b62cb35b84f49bba10d5b47919e5, type: 3}
+  - {fileID: 2800000, guid: 84c839fb092eb1a44a297a78c8087398, type: 3}
+  - {fileID: 2800000, guid: a6729ba98f61591468c489512095667a, type: 3}
+  - {fileID: 2800000, guid: c508fa8acec268e40b33288139c220aa, type: 3}
+  - {fileID: 2800000, guid: db9af8a1d3f740d4a9ad06e1e408bcfe, type: 3}
+  - {fileID: 2800000, guid: cb3b3e059af0a8a4a8efe549ea3782c6, type: 3}
+  - {fileID: 2800000, guid: f77c2387e9432e443912192c64464abf, type: 3}
+  - {fileID: 2800000, guid: 0307e2db3459e444a816e77aa07617dc, type: 3}
+  - {fileID: 2800000, guid: 5069078c69f34624491132d74bb317fd, type: 3}
+  - {fileID: 2800000, guid: 6286d4f450c486445b96c8566e25af01, type: 3}
+  - {fileID: 2800000, guid: 999df0aee5f49564d91b4d973c10b26e, type: 3}
+  - {fileID: 2800000, guid: 0bc4b06a2d657e04ab4a5e5accf1160a, type: 3}
+  - {fileID: 2800000, guid: 4e63fdf122afffb46933e4b427955ae2, type: 3}
+  playerFrames2:
+  - {fileID: 2800000, guid: a79c79e2123bfab4cbe8aa2338542861, type: 3}
+  - {fileID: 2800000, guid: 9f8b47d38f260a54397c17ad66aff1d9, type: 3}
+  - {fileID: 2800000, guid: e194fc46734c4054dbc94afdec4a3090, type: 3}
+  - {fileID: 2800000, guid: 67316e4daf13ae14e84b2aeec21e4c3d, type: 3}
+  - {fileID: 2800000, guid: ee870fc12ca6d9b46a3cfd35ad8f9f6f, type: 3}
+  - {fileID: 2800000, guid: 63fbc11621cf2ac43b6139afb813563d, type: 3}
+  - {fileID: 2800000, guid: 49b834a5f0bddd147b3ff4f060fc6975, type: 3}
+  - {fileID: 2800000, guid: d278cbacbb6c387429f523116ca42c35, type: 3}
+  - {fileID: 2800000, guid: de386161120f0e34b93d89d37d6bae1e, type: 3}
+  - {fileID: 2800000, guid: 71a0eecbebaf18046995fe9b61d506d3, type: 3}
+  - {fileID: 2800000, guid: 461805073c147a8459e33a8282337351, type: 3}
+  - {fileID: 2800000, guid: 441aef96f7bca3c449f6fe21ccd2b44b, type: 3}
+  - {fileID: 2800000, guid: 59a77def5456f3b4683945622f9f3b07, type: 3}
+  - {fileID: 2800000, guid: ebda718ce627fb94d89b191a8278a125, type: 3}
+  playerFrames3:
+  - {fileID: 2800000, guid: da02dfeef85d21148bea4997460aa727, type: 3}
+  - {fileID: 2800000, guid: 489d0c648c1c15d4ab8a9130bd9b58d8, type: 3}
+  - {fileID: 2800000, guid: 61a729308aa04bd4883793179b6d1841, type: 3}
+  - {fileID: 2800000, guid: 575105122c80b634cb1fdc5e57640bec, type: 3}
+  - {fileID: 2800000, guid: ceb9c9c512a1b7341b6e34d633ea9c7a, type: 3}
+  - {fileID: 2800000, guid: 48fff61e75e48784e851cc9d9d72c9a4, type: 3}
+  - {fileID: 2800000, guid: 92f3385db57d21342a470d833cee6313, type: 3}
+  - {fileID: 2800000, guid: 8ab7238323f21b341bc47fab84265237, type: 3}
+  - {fileID: 2800000, guid: ae0717b290227ff4384fc02384d60dd4, type: 3}
+  - {fileID: 2800000, guid: b3c731a66474f6c4ca00355942e5be89, type: 3}
+  - {fileID: 2800000, guid: 2a2b2e751c1de5842be19df46568a0bc, type: 3}
+  - {fileID: 2800000, guid: 8fc74144c8642d24c85376c79a6bd505, type: 3}
+  - {fileID: 2800000, guid: 800c23ae4a6bf5c4798ab106400ccbdb, type: 3}
+  - {fileID: 2800000, guid: 4f577cf6a3879dc42a0c909cbf562d3d, type: 3}
   playerImage: {fileID: 0}
+  gameManager: {fileID: 1455279581}
   beenHit: 0
   playerHealth: 0
   hitSound: {fileID: 8300000, guid: d60c608b71096fa4c87e930c42c0e5d0, type: 3}
@@ -366,6 +409,7 @@ MonoBehaviour:
   source: {fileID: 0}
   previousHitPitch: 0
   previousJumpPitch: 0
+  currentState: 0
 --- !u!82 &466642335
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1017,19 +1061,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.15202326e-07
+      value: -0.000000115202326
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: .707106709
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -.707106829
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1.15202312e-07
+      value: -0.00000011520231
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 917caf65c2907cd4fbdd7ab3dbc5beef, type: 3}
       propertyPath: m_RootOrder
@@ -1209,6 +1253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stressDistance: 0
   stressSpeed: 2.5
+  currentLifeStage: 0
 --- !u!114 &1455279582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,7 +1268,6 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 183308, guid: c44e85b0919387c46ab1f363602efb5e, type: 2}
   - {fileID: 121578, guid: fe5d7df7a43e445489c89b86a6073732, type: 2}
-  - {fileID: 194308, guid: b9f42f71da80dc649832fece1845b4dd, type: 2}
   - {fileID: 183974, guid: 47114803b4df7284386be5a31390a463, type: 2}
   ObstacleSpawnInterval: 1
 --- !u!114 &1455279583

@@ -24,7 +24,7 @@ public class LevelSelect : MonoBehaviour {
     public void PlayGame()
     {
         Application.LoadLevel(1);
-        AudioController.SetMelodyVol(1f);
+        //AudioController.SetMelodyVol(1f);
     }
 
 	public void MainMenu() {

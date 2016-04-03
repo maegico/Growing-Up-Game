@@ -9,7 +9,11 @@ public class Obstacle : MonoBehaviour {
 	// the position of the obstacle on the wheel
 	// measured in degrees from the top (zero)
 	public float positionOnWheel;
-	public string obsName;
+	public string[] obsName;
+
+    public Texture2D[] obstacleTextures;
+    public GameObject obstacleImage;
+
 
 	protected BigRoller wheel;
 
@@ -40,8 +44,7 @@ public class Obstacle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        
+        obstacleImage.GetComponent<Renderer>().material.SetTexture("_MainTex", obstacleTextures[manager.currentLifeStage]);
     }
 		
     // Sets a random lane

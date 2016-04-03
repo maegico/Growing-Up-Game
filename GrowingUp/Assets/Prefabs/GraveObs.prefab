@@ -171,7 +171,15 @@ MonoBehaviour:
   currentLane: 2
   changeLaneTrigger: 420
   positionOnWheel: 270
-  obsName: Another Funeral
+  obsName:
+  - Monster Under The Bed!
+  - Graduation!
+  - Another Funeral!
+  obstacleTextures:
+  - {fileID: 2800000, guid: 098deade6e009a74283ebbdde5e868ef, type: 3}
+  - {fileID: 2800000, guid: d589f51a0db002146acf1925ad4484e7, type: 3}
+  - {fileID: 2800000, guid: 5b7b0006ebb827346852b1af4bcb5b70, type: 3}
+  obstacleImage: {fileID: 180134}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

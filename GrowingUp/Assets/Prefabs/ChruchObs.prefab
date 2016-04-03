@@ -171,7 +171,15 @@ MonoBehaviour:
   currentLane: 2
   changeLaneTrigger: 420
   positionOnWheel: 270
-  obsName: Time For Church
+  obsName:
+  - Discipline!
+  - Time For Church!
+  - Bills Bills Bills!
+  obstacleTextures:
+  - {fileID: 2800000, guid: f9959d82789a96940b13fddd28e64d1b, type: 3}
+  - {fileID: 2800000, guid: 4608c54532012cb4c834a247e03b1e88, type: 3}
+  - {fileID: 2800000, guid: c2324978e87f1dc44a8f241615dbe5a8, type: 3}
+  obstacleImage: {fileID: 100560}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

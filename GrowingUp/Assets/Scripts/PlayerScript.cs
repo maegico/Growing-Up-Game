@@ -29,7 +29,10 @@ public class PlayerScript : MonoBehaviour {
     public float animationTimer;               // The timer for the player animation
     public int playerFrame;                    // The player's current frame
     public Texture2D[] playerFrames;           // Player's textures
-    public GameObject playerImage;             // Player's current texture
+    public Texture2D[] playerFrames2;
+    public Texture2D[] playerFrames3;
+    public GameObject playerImage;             // Player's current "texture"
+    public GameManagerInit gameManager;
     public bool beenHit;                       // True is player is currently in "being hit" animation
     float hitTimer;
     public float playerHealth;
@@ -39,6 +42,7 @@ public class PlayerScript : MonoBehaviour {
     public AudioSource source;
     public float previousHitPitch;
     public float previousJumpPitch;
+    
 
     public static float PlayerMaxHealth
     {
@@ -187,7 +191,7 @@ public class PlayerScript : MonoBehaviour {
 
         //This section handles the 2D Animation
         animationTimer += Time.deltaTime;
-        if (animationTimer >= 0.25)
+        if (animationTimer >= 0.03)
         {
             // Uses the second from of animation if player is currently jumping
             if (curState == playerState.jumping)
@@ -199,24 +203,22 @@ public class PlayerScript : MonoBehaviour {
                 // Picks the current frame of animation based on the timer
                 animationTimer = 0;
                 playerFrame += 1;
-                if (playerFrame > 3) playerFrame = 0;
-                switch (playerFrame)
+                if (playerFrame > 13) playerFrame = 0;
+                switch (gameManager.currentLifeStage)
                 {
                     case 0:
-                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[0]);
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[playerFrame]);
                         break;
                     case 1:
-                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames2[playerFrame]);
                         break;
                     case 2:
-                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[2]);
-                        break;
-                    case 3:
-                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[3]);
+                        playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames3[playerFrame]);
                         break;
                     default:
                         break;
                 }
+                playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[playerFrame]);
             }
         }
         

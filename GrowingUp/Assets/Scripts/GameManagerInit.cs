@@ -12,6 +12,7 @@ public class GameManagerInit : MonoBehaviour {
     public float stressDistance;        // Distance "life's stress" is from player
 	public float stressSpeed;			// how fast life catches up
     const float maxDistance = 20;       // Maximum distance "life's stress" can be from the player
+    public int currentLifeStage;
 
 
     protected bool obstaclesPregenerated = false;
@@ -54,6 +55,8 @@ public class GameManagerInit : MonoBehaviour {
         UI = GetComponent<GameplayUI>();
         // get actual player angle
         player.posOnWheel = Vector3.Angle(Vector3.up, player.transform.position - wheel.transform.position);
+
+        currentLifeStage = 0;
 
         stressDistance = maxDistance;
 
@@ -124,6 +127,9 @@ public class GameManagerInit : MonoBehaviour {
 		if (player.playerHealth < 1) {
 			levelSelect.MainMenu();
 		}
+        currentLifeStage = 0;
+        if (player.playerHealth < 20) currentLifeStage = 1;
+        if (player.playerHealth < 10) currentLifeStage = 2;
     }
 
 	// create some obstacles before the game starts so that its not boring
@@ -155,7 +161,7 @@ public class GameManagerInit : MonoBehaviour {
         if (player.beenHit == false)
         {
             wheel.PlayerHit = true;
-			UI.showObstacleText (obs.obsName);
+			UI.showObstacleText (obs.obsName[currentLifeStage]);
 
             player.HitPlayer();
         }
