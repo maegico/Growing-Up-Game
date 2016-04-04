@@ -31,6 +31,10 @@ public class LevelSelect : MonoBehaviour {
 		Application.LoadLevel(0);
 	}
 
+	public void Scores() {
+		Application.LoadLevel(2);
+	}
+
     private void LoadLevelByName()
     {
         

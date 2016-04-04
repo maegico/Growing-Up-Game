@@ -93,7 +93,7 @@ public class GameManagerInit : MonoBehaviour {
 		}
         if (!player.beenHit)
         {
-            stressDistance += Time.deltaTime;
+			stressDistance += stressSpeed * Time.deltaTime;
             if (stressDistance > maxDistance) stressDistance = maxDistance;
         }
         else
@@ -103,13 +103,13 @@ public class GameManagerInit : MonoBehaviour {
         }
         if (stressDistance < 5)
         {
-            player.playerHealth -= Time.deltaTime;
+            player.playerHealth -= 3*Time.deltaTime;
             UI.BarWidth = player.playerHealth / 30.0f;
         }
-        UI.stressOverlay[0].color = new Color(0, 0, 0, (maxDistance - stressDistance) / 10);
+		UI.stressOverlay[0].color = new Color(0, 0, 0, Mathf.Min(0.5f,(maxDistance - stressDistance) / 10));
         if (stressDistance < 10)
         {
-            UI.stressOverlay[1].color = new Color(0, 0, 0, (maxDistance - stressDistance - 10) / 5);
+			UI.stressOverlay[1].color = new Color(0, 0, 0,  Mathf.Min(0.5f,(maxDistance - stressDistance - 10) / 5));
         }
         else
         {
@@ -117,7 +117,7 @@ public class GameManagerInit : MonoBehaviour {
         }
         if (stressDistance < 15)
         {
-            UI.stressOverlay[2].color = new Color(0, 0, 0, (maxDistance - stressDistance - 15) / 5);
+			UI.stressOverlay[2].color = new Color(0, 0, 0,  Mathf.Min(0.5f,(maxDistance - stressDistance - 15) / 5));
         }
         else
         {
@@ -125,7 +125,7 @@ public class GameManagerInit : MonoBehaviour {
         }
 		// check for player dead
 		if (player.playerHealth < 1) {
-			levelSelect.MainMenu();
+			levelSelect.Scores();
 		}
         currentLifeStage = 0;
         if (player.playerHealth < 20) currentLifeStage = 1;

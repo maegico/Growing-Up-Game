@@ -1,0 +1,3 @@
+The animation for the different stages of the girl all have 14 frames for one cycle.
+When implementing animation, each frame must stay for 3 frames or the animation will look too fast.
+That value is considering an animation of 30 frames per second.

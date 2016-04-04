@@ -118,7 +118,7 @@ public class PlayerScript : MonoBehaviour {
                 playerImage.GetComponent<Renderer>().enabled = true;
             }
             //Ends hit animation
-            if (hitTimer > 3.5)
+            if (hitTimer > 1.5)
             {
                 hitTimer = 0;
                 beenHit = false;

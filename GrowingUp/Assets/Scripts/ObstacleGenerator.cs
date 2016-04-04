@@ -84,6 +84,7 @@ public class ObstacleGenerator : MonoBehaviour
 		return newObstacle;
 	}
 	public void IncreaseDifficultyOverTime() {
-		ObstacleSpawnInterval = initialObstacleSpawnInterval * ( 1.0f/Mathf.Log10(roller.DistanceRotated+10.0f) );
+		ObstacleSpawnInterval = Mathf.Max(0.2f,initialObstacleSpawnInterval - ( 1.0f/1500.0f)*roller.DistanceRotated );
+		print(ObstacleSpawnInterval);
 	}
 }

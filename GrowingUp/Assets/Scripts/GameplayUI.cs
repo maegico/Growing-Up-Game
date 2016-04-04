@@ -9,7 +9,8 @@ public class GameplayUI : MonoBehaviour
     public Canvas canvas; // set in inspector
     public GameObject childhoodBar; // set in inspector
     public RawImage[] stressOverlay; // set in inspector
-	public Text growingText; // set in inspector
+	public Sprite[] growTexts;
+	public Image growingText; // set in inspector
 	public float growingTextDuration; // set in inspector how many seconds text grows
 	protected float growingTextTimer; // timer for the grow effect
     private float barWidth; // width of the childhood bar
@@ -34,6 +35,8 @@ public class GameplayUI : MonoBehaviour
     public int[] monthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     // leap years...
 
+	protected Score score;
+
     protected GameManagerInit manager;
 
     public float BarWidth
@@ -57,6 +60,12 @@ public class GameplayUI : MonoBehaviour
         childhoodBar = GameObject.FindGameObjectWithTag("ChildhoodBar");
         BarWidth = 1.0f;
 		growingTextTimer = growingTextDuration + 1;
+
+		// SCORE
+		// acquire score object
+		if (GameObject.FindObjectOfType<Score>() != null) {
+			score = GameObject.FindObjectOfType<Score>();
+		}
     }
 
     // Update is called once per frame
@@ -66,6 +75,8 @@ public class GameplayUI : MonoBehaviour
         date = (int)(manager.Wheel.DistanceRotated * degreesRotatedPerDay);
         // set the UI to the date
         scoreCounter.text = ConvertIntToDateString(date);
+		// save score
+		score.playerScore = date;
 
         RectTransform rt = childhoodBar.GetComponent<RectTransform>();
 		//rt.sizeDelta = new Vector2 (-4, -4);//rt.rect.height);
@@ -106,7 +117,6 @@ public class GameplayUI : MonoBehaviour
 
 	public void showObstacleText(string message) {
 		print (message);
-		growingText.text = message;
 		growingTextTimer = 0;
 	}
 		
