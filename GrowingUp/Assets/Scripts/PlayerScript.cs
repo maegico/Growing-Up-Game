@@ -29,9 +29,11 @@ public class PlayerScript : MonoBehaviour {
 
     public float animationTimer;               // The timer for the player animation
     public int playerFrame;                    // The player's current frame
+	protected int stage;
     public Texture2D[] playerFrames;           // Player's textures
     public Texture2D[] playerFrames2;
     public Texture2D[] playerFrames3;
+	protected Texture2D[] pFrames;
     public GameObject playerImage;             // Player's current "texture"
     public GameManagerInit gameManager;
     public bool beenHit;                       // True is player is currently in "being hit" animation
@@ -56,7 +58,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+		stage = 0;
         currentLane = Location.lane.middle; // start in the middle lane                                            
         timer = 0; // reset time
 		laneTransitionTimer = 0;
@@ -74,6 +76,7 @@ public class PlayerScript : MonoBehaviour {
         source = GetComponent<AudioSource>();
         previousHitPitch = 1.4f;
         previousJumpPitch = 1.0f;
+		pFrames = playerFrames;
     }
 	
 	// Update is called once per frame
@@ -224,10 +227,29 @@ public class PlayerScript : MonoBehaviour {
         animationTimer += Time.deltaTime;
         if (animationTimer >= 0.03)
         {
+			if(gameManager.currentLifeStage != stage) {
+				stage = gameManager.currentLifeStage;
+				switch(stage) {
+				case 0:
+					pFrames = playerFrames;
+					transform.localScale = new Vector3(12,5,5);
+					break;
+				case 1:
+					pFrames = playerFrames2;
+					transform.localScale = new Vector3(12,7,5);
+					initialHeight = 8;
+					break;
+				case 2:
+					pFrames = playerFrames3;
+					transform.localScale = new Vector3(12,10,5);
+					initialHeight = 11;
+					break;
+				}
+			}
             // Uses the second from of animation if player is currently jumping
             if (curState == playerState.jumping)
             {
-                playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[1]);
+				playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", pFrames[1]);
             }
             else
             {
@@ -235,7 +257,7 @@ public class PlayerScript : MonoBehaviour {
                 animationTimer = 0;
                 playerFrame += 1;
                 if (playerFrame > 13) playerFrame = 0;
-                switch (gameManager.currentLifeStage)
+                /*switch (gameManager.currentLifeStage)
                 {
                     case 0:
                         playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[playerFrame]);
@@ -248,8 +270,9 @@ public class PlayerScript : MonoBehaviour {
                         break;
                     default:
                         break;
-                }
-                playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", playerFrames[playerFrame]);
+                }*/
+                playerImage.GetComponent<Renderer>().material.SetTexture("_MainTex", pFrames[playerFrame]);
+				
             }
         }
         
