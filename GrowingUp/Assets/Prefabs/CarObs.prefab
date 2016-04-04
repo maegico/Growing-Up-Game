@@ -179,6 +179,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: efb5c41902051324796aac8b169e02bf, type: 3}
   - {fileID: 2800000, guid: 4c930fad15ee7df459a3bd6e595dd604, type: 3}
   - {fileID: 2800000, guid: 67c114859aac3244f9080cf60ba6dc1a, type: 3}
+  obstacleXScales:
+  - 5
+  - 8
+  - 5
   obstacleImage: {fileID: 154476}
 --- !u!1001 &100100000
 Prefab:

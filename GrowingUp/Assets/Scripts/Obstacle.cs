@@ -12,8 +12,10 @@ public class Obstacle : MonoBehaviour {
 	public string[] obsName;
 
     public Texture2D[] obstacleTextures;
+	public float[] obstacleXScales;
     public GameObject obstacleImage;
 
+	protected int prevLifeStage = -1;
 
 	protected BigRoller wheel;
 
@@ -44,7 +46,13 @@ public class Obstacle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        obstacleImage.GetComponent<Renderer>().material.SetTexture("_MainTex", obstacleTextures[manager.currentLifeStage]);
+
+		// when the life stage change occurs
+		if (prevLifeStage != manager.currentLifeStage) {
+        	obstacleImage.GetComponent<Renderer>().material.SetTexture("_MainTex", obstacleTextures[manager.currentLifeStage]);
+			transform.localScale = new Vector3(obstacleXScales[manager.currentLifeStage]/transform.parent.localScale.x,transform.localScale.y,transform.localScale.z);
+		}
+
     }
 		
     // Sets a random lane
