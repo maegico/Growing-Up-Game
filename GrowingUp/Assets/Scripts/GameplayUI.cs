@@ -15,6 +15,19 @@ public class GameplayUI : MonoBehaviour
 	protected float growingTextTimer; // timer for the grow effect
     private float barWidth; // width of the childhood bar
 
+	// indexes of the words
+	protected string[] growTextNames = {
+		"Another Funeral!",
+		"Homework!",
+		"Monster Under The Bed!",
+		"Car Payment!",
+		"Bills Bills Bills!",
+		"Discipline!",
+		"Too Much TV!",
+		"Graduation!",
+		"Time For Church!"
+	};
+
     // this is what you are setting to the date string
     public Text scoreCounter; // set in inspector
     
@@ -118,6 +131,7 @@ public class GameplayUI : MonoBehaviour
 	public void showObstacleText(string message) {
 		print (message);
 		growingTextTimer = 0;
+		growingText.sprite = growTexts[System.Array.IndexOf(growTextNames,message)];
 	}
 		
 	protected void emergeGrowingText() {
