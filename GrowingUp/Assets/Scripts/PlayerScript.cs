@@ -20,7 +20,8 @@ public class PlayerScript : MonoBehaviour {
     protected int laneWidthInt;         // the width of a lane rounded to an integer
     public float jumpHeight;
     float initialHeight;
-
+	float laneTransitionTimer;
+	float LANE_TRANSITION_TIME;
     
     public float posOnWheel = 30f;      // the player's position on the wheel, for use in obstacle hit
                                         // uses degrees as unit
@@ -58,6 +59,8 @@ public class PlayerScript : MonoBehaviour {
 		
         currentLane = Location.lane.middle; // start in the middle lane                                            
         timer = 0; // reset time
+		laneTransitionTimer = 0;
+		LANE_TRANSITION_TIME = 0.1f;
         playerPosition = 0; // lane 0 is the center lane
         curState = playerState.inLane;
 		laneWidthInt = (int)laneWidth;
@@ -153,7 +156,22 @@ public class PlayerScript : MonoBehaviour {
         {
 			// increment timer
 			timer += Time.deltaTime;
-			// if the player is not far enough to the left, move them left
+
+			// increment timer
+			timer += Time.deltaTime;
+			// increment lane timer
+			laneTransitionTimer += Time.deltaTime;
+
+			float offset = 0f;
+			if (currentLane == Location.lane.middle) offset = +9f;
+			transform.position = new Vector3((-9f)*(laneTransitionTimer/LANE_TRANSITION_TIME) + offset,transform.position.y,transform.position.z);
+			if (laneTransitionTimer >= LANE_TRANSITION_TIME) {
+				transform.position = new Vector3(-9f + offset,transform.position.y,transform.position.z);
+				curState = playerState.inLane;
+				laneTransitionTimer = 0;
+			}
+
+			/*// if the player is not far enough to the left, move them left
             if (gameObject.transform.position.x > (-9 + playerPosition))
             {
                 gameObject.transform.Translate(new Vector3(-Time.deltaTime * (9f / 0.1f), 0, 0));
@@ -165,15 +183,28 @@ public class PlayerScript : MonoBehaviour {
                 curState = playerState.inLane;
                 playerPosition -= 9;
                 gameObject.transform.position = new Vector3((float)playerPosition, gameObject.transform.position.y, gameObject.transform.position.z);
-            }
+            }*/
         }
 
         // transition the model right
         if (curState == playerState.movingRight)
         {
+			
             // increment timer
             timer += Time.deltaTime;
-			// if the player is not far enough to the right, move them right
+			// increment lane timer
+			laneTransitionTimer += Time.deltaTime;
+
+			float offset = 0f;
+			if (currentLane == Location.lane.middle) offset = -9f;
+			transform.position = new Vector3((9f)*(laneTransitionTimer/LANE_TRANSITION_TIME) + offset,transform.position.y,transform.position.z);
+			if (laneTransitionTimer >= LANE_TRANSITION_TIME) {
+				transform.position = new Vector3(9f + offset,transform.position.y,transform.position.z);
+				curState = playerState.inLane;
+				laneTransitionTimer = 0;
+			}
+
+			/*// if the player is not far enough to the right, move them right
             if (gameObject.transform.position.x < (9 + playerPosition))
             {
                 gameObject.transform.Translate(new Vector3(Time.deltaTime * (9f / 0.1f), 0, 0));
@@ -185,7 +216,7 @@ public class PlayerScript : MonoBehaviour {
                 curState = playerState.inLane;
                 playerPosition += 9;
                 gameObject.transform.position = new Vector3((float)playerPosition, gameObject.transform.position.y, gameObject.transform.position.z);
-            }
+            }*/
         }
         
 
@@ -246,10 +277,12 @@ public class PlayerScript : MonoBehaviour {
             case Location.lane.left:
                 currentLane = Location.lane.middle;
                 curState = playerState.movingRight;
+				laneTransitionTimer = 0;
                 break;
             case Location.lane.middle:
                 currentLane = Location.lane.right;
                 curState = playerState.movingRight;
+				laneTransitionTimer = 0;
                 break;
             case Location.lane.right:
                 break;

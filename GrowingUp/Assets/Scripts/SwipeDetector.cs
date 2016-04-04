@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SwipeDetector : MonoBehaviour 
 {
@@ -7,6 +8,8 @@ public class SwipeDetector : MonoBehaviour
 	public float minSwipeDistY;
 
 	public float minSwipeDistX;
+
+	public Text Dbug;
 
 	private Vector2 startPos;
 
@@ -25,9 +28,28 @@ public class SwipeDetector : MonoBehaviour
 
 			Touch touch = Input.touches[0];
 
+			// move player
+			int touchLane = (int)Mathf.Floor(3*touch.position.x/Screen.width);
+			//Dbug.text = "touchLane: " + touchLane+" playerlane: " + (int)player.currentLane;
 
+			// left
+			if ( (int)player.currentLane > touchLane) {
+				player.MoveLeft();
+				if ( (int)player.currentLane > touchLane) {
+					player.MoveLeft();
+				}
+			}
+			// right
+			if ( (int)player.currentLane < touchLane) {
+					player.MoveRight();
+					if ( (int)player.currentLane < touchLane) {
+						player.MoveRight();
+					}
 
-			switch (touch.phase) 
+			}
+
+			/*
+
 
 			{
 
@@ -79,6 +101,7 @@ public class SwipeDetector : MonoBehaviour
 					}
 				break;
 			}
+			*/
 		}
 	}
 }
