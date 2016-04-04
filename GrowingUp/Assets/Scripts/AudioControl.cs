@@ -7,15 +7,13 @@ public class AudioControl : MonoBehaviour {
 
     public AudioMixer mixer;
 
-	// Use this for initialization
-	void Start () {
-        if (this.gameObject.name != "AudioController") Destroy(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
-	}
-	
+    // Use this for initialization
+    void Start()
+    {
+    }
+
 	// Update is called once per frame
 	void Update () {
-        if (SceneManager.GetActiveScene().name == "Default") ;
 	}
 
     /// <summary>
@@ -46,6 +44,26 @@ public class AudioControl : MonoBehaviour {
     {
         if (level != 0f) mixer.SetFloat("melodyVol", 20f * Mathf.Log10(level));
         else mixer.SetFloat("melodyVol", -80.0f);
+    }
+
+    /// <summary>
+    /// Modify master volume
+    /// </summary>
+    /// <param name="level">Volume level /1</param>
+    public void SetTeenVol(float level)
+    {
+        if (level != 0f) mixer.SetFloat("teenVol", 20f * Mathf.Log10(level));
+        else mixer.SetFloat("teenVol", -80.0f);
+    }
+
+    /// <summary>
+    /// Modify master volume
+    /// </summary>
+    /// <param name="level">Volume level /1</param>
+    public void SetAdultVol(float level)
+    {
+        if (level != 0f) mixer.SetFloat("adultVol", 20f * Mathf.Log10(level));
+        else mixer.SetFloat("adultVol", -80.0f);
     }
 
     /// <summary>

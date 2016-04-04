@@ -8,6 +8,8 @@ public class GameManagerInit : MonoBehaviour {
 	BigRoller wheel;
 	LevelSelect levelSelect;
     GameplayUI UI;
+
+    protected AudioControl AudioController;
     
     public float stressDistance;        // Distance "life's stress" is from player
 	public float stressSpeed;			// how fast life catches up
@@ -60,7 +62,7 @@ public class GameManagerInit : MonoBehaviour {
 
         stressDistance = maxDistance;
 
-        
+        AudioController = GameObject.Find("Global").GetComponent<AudioControl>();
 
         // Audio test stuff
         //bassTrack.clip = Bass;
@@ -126,10 +128,18 @@ public class GameManagerInit : MonoBehaviour {
 		// check for player dead
 		if (player.playerHealth < 1) {
 			levelSelect.Scores();
-		}
+        }
         currentLifeStage = 0;
-        if (player.playerHealth < 20) currentLifeStage = 1;
-        if (player.playerHealth < 10) currentLifeStage = 2;
+        if (player.playerHealth < 20)
+        {
+            currentLifeStage = 1;
+            AudioController.SetTeenVol(1f);
+        }
+        if (player.playerHealth < 10)
+        {
+            currentLifeStage = 2;
+            AudioController.SetAdultVol(1f);
+        }
     }
 
 	// create some obstacles before the game starts so that its not boring
