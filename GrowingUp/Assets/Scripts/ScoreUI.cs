@@ -18,7 +18,6 @@ public class ScoreUI : MonoBehaviour {
 		"Kid",
 		"Toddler",
 		"Baby",
-		"Cheater"
 	};
 	protected int[] defaultScores = {
 		30009,
@@ -28,8 +27,7 @@ public class ScoreUI : MonoBehaviour {
 		4505,
 		2500,
 		1000,
-		500,
-		10000000
+		500
 	};
 
 	// Use this for initialization
@@ -44,8 +42,15 @@ public class ScoreUI : MonoBehaviour {
 		// set names and dates
 		string nameStr = "";
 		string dateStr = "";
-		for (int i=0; i<defaultNames.Length-1; i++) {
-			if (defaultScores[i] < score.playerScore && defaultScores[i+1] > score.playerScore) {
+		if (defaultScores[0] < score.playerScore) {
+			nameStr += "YOUR SCORE\n";
+			dateStr += ConvertIntToDateString(score.playerScore) + "\n";
+		} else {
+			nameStr += defaultNames[0]+"\n";
+			dateStr += ConvertIntToDateString(defaultScores[0]) + "\n";
+		}
+		for (int i=1; i<defaultNames.Length; i++) {
+			if (defaultScores[i] < score.playerScore && defaultScores[i-1] > score.playerScore) {
 				nameStr += "YOUR SCORE\n";
 				dateStr += ConvertIntToDateString(score.playerScore) + "\n";
 			} else {
